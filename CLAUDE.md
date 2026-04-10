@@ -9,7 +9,7 @@ This file provides guidance to Claude Code when working with this repository.
 
 ## Repository Overview
 
-**ekson-claude-plugins** is a personal Claude Code plugin marketplace owned by [Emilson Moraes](https://github.com/ekson73).
+**eko-claude-plugins** is a personal Claude Code plugin marketplace owned by [Emilson Moraes](https://github.com/ekson73).
 
 **Purpose**: Centralized distribution of Claude Code plugins developed for AI agent workflows and multi-agent coordination.
 
@@ -20,7 +20,7 @@ This file provides guidance to Claude Code when working with this repository.
 ## Architecture
 
 ```
-ekson-claude-plugins/                    # Marketplace root
+eko-claude-plugins/                    # Marketplace root
 ├── .claude-plugin/
 │   └── marketplace.json                 # Plugin registry (source of truth)
 ├── .gitignore                           # Git exclusions

@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-04-10
+
+### Changed
+- Repository renamed from `ekson-claude-plugins` to `eko-claude-plugins` (GitHub repo rename)
+- Updated all internal references: `marketplace.json`, `README.md`, `CLAUDE.md`, `CHANGELOG.md`
+- New install command: `claude plugin marketplace add ekson73/eko-claude-plugins`
+
 ## [1.0.1] - 2026-01-08
 
 ### Added
@@ -36,7 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Infrastructure
 - Marketplace structure following Claude Code plugin standards
-- GitHub repository: `ekson73/ekson-claude-plugins`
+- GitHub repository: `ekson73/eko-claude-plugins`
 - Plugin source: `ekson73/multi-agent-os`
 
 ---

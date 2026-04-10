@@ -1,6 +1,6 @@
 {
-  "name": "ekson-claude-plugins",
-  "version": "1.2.0",
+  "name": "eko-claude-plugins",
+  "version": "1.2.1",
   "owner": {
     "name": "Emilson Moraes",
     "email": "emilson.moraes@gmail.com",
@@ -8,10 +8,10 @@
   },
   "metadata": {
     "description": "Personal Claude Code plugin marketplace - AI agent tools and workflows",
-    "repository": "https://github.com/ekson73/ekson-claude-plugins",
+    "repository": "https://github.com/ekson73/eko-claude-plugins",
     "license": "MIT",
-    "homepage": "https://github.com/ekson73/ekson-claude-plugins",
-    "lastUpdated": "2026-03-08"
+    "homepage": "https://github.com/ekson73/eko-claude-plugins",
+    "lastUpdated": "2026-04-10"
   },
   "plugins": [
     {
