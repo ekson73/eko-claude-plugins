@@ -55,7 +55,7 @@ eko-claude-plugins/                    # Marketplace root
 
 | Plugin | Source | Version | Status |
 |--------|--------|---------|--------|
-| [multi-agent-os](https://github.com/ekson73/multi-agent-os) | `ekson73/multi-agent-os` | 1.0.0 | Active |
+| [multi-agent-os](https://github.com/ekson73/multi-agent-os) | `ekson73/multi-agent-os` | 1.5.0 | Active |
 
 ---
 

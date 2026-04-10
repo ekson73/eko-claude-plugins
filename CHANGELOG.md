@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-04-10
+
+### Changed
+- Sync maos plugin version: 1.4.0 → 1.5.0 (matches multi-agent-os v1.5.0)
+- README title: "Ekson Claude Plugins" → "Eko Claude Plugins"
+- CLAUDE.md: Registered Plugins table updated to v1.5.0
+- Submodule `plugins/multi-agent-os` initialized and updated to latest commit
+
+### Added
+- Marketplace Versions table in CHANGELOG with full history
+
 ## [1.2.1] - 2026-04-10
 
 ### Changed
@@ -52,12 +63,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Plugin | Current Version | Last Updated |
 |--------|-----------------|--------------|
-| multi-agent-os | 1.0.0 | 2026-01-07 |
+| multi-agent-os | 1.5.0 | 2026-04-10 |
 
 ## Marketplace Versions
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.3.0 | 2026-04-10 | Sync maos plugin to v1.5.0, harmonize with multi-agent-os |
+| 1.2.1 | 2026-04-10 | Rename ekson-claude-plugins → eko-claude-plugins |
 | 1.0.1 | 2026-01-08 | CLAUDE.md, README badges, schema fixes |
 | 1.0.0 | 2026-01-07 | Initial release with multi-agent-os |
 
