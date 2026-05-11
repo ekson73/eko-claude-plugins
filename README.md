@@ -21,9 +21,9 @@ claude plugin install multi-agent-os
 
 ## Available Plugins
 
-| Plugin | Description | Version | Category |
-|--------|-------------|---------|----------|
-| [multi-agent-os](https://github.com/ekson73/multi-agent-os) | Multi-Agent Coordination Framework | 1.5.0 | AI Agents |
+| Plugin | Description | Version | Category | Source |
+|--------|-------------|---------|----------|--------|
+| [maos](https://github.com/ekson73/multi-agent-os) | Multi-Agent Coordination Framework | 1.5.0 | AI Agents | `github:ekson73/multi-agent-os` pinned at SHA `be1737b9` |
 
 ## Plugin Details
 
@@ -56,9 +56,8 @@ A comprehensive Claude Code plugin for orchestrating AI agents in software devel
 claude plugin marketplace add ekson73/eko-claude-plugins
 claude plugin install multi-agent-os
 
-# From source
-git clone https://github.com/ekson73/multi-agent-os.git
-claude plugins install /path/to/multi-agent-os
+# Fetched by Claude Code from upstream at pinned SHA (no submodule/clone needed)
+# See marketplace.json source.sha for the exact pin.
 ```
 
 ## Contributing

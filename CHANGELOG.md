@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-05-12
+
+### Changed
+- **BREAKING (internal architecture)**: migrated `maos` plugin from git submodule + relative path source to official Anthropic [`github` source type](https://code.claude.com/docs/en/plugin-marketplaces#plugin-sources) with explicit SHA pin.
+  - Eliminates 273 vendored/submodule files from working tree.
+  - Eliminates the need to recurse submodules on clone.
+  - Aligns with the same pattern adopted by sibling marketplace `vek-im/vek-claude-plugins` v1.3.0+.
+- `maos` SHA pin: `be1737b9521653d6b09f7ff84c907e2a07f8f1eb` (upstream HEAD 2026-05-11; captures converge v1.1.1 with Invariant 6 audit-not-persuasion + provider-matrix vek-servicos→vek-im rename).
+
+### Removed
+- `.gitmodules` (no submodules anymore).
+- `plugins/multi-agent-os` submodule entry (content now fetched fresh by Claude Code from upstream at pinned SHA).
+- `plugins/` directory (was sole holder of the submodule).
+
+### Refs
+- Anthropic plugin-marketplaces docs: https://code.claude.com/docs/en/plugin-marketplaces#plugin-sources
+- Sibling migration: https://github.com/vek-im/vek-claude-plugins/pull/1 (v1.3.0) + https://github.com/vek-im/vek-claude-plugins/pull/2 (v1.3.1)
+- Plugin Provenance Standard [C12] (user-scope `~/.claude/CLAUDE.md`)
+- External-Repo Integration Pattern [C14] — submodules retired for live-watched plugin dirs
+
 ## [1.3.0] - 2026-04-10
 
 ### Changed
@@ -69,6 +89,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 1.4.0 | 2026-05-12 | Migrate maos from submodule to `github` source type (official Anthropic pattern), SHA pin |
 | 1.3.0 | 2026-04-10 | Sync maos plugin to v1.5.0, harmonize with multi-agent-os |
 | 1.2.1 | 2026-04-10 | Rename ekson-claude-plugins → eko-claude-plugins |
 | 1.0.1 | 2026-01-08 | CLAUDE.md, README badges, schema fixes |
