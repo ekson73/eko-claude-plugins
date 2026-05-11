@@ -1,6 +1,6 @@
 {
   "name": "eko-claude-plugins",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "owner": {
     "name": "Emilson Moraes",
     "email": "emilson.moraes@gmail.com",
@@ -11,7 +11,7 @@
     "repository": "https://github.com/ekson73/eko-claude-plugins",
     "license": "MIT",
     "homepage": "https://github.com/ekson73/eko-claude-plugins",
-    "lastUpdated": "2026-04-10"
+    "lastUpdated": "2026-05-12"
   },
   "plugins": [
     {
@@ -22,7 +22,11 @@
         "name": "Vek - Desenvolvimento de Software",
         "email": "emilson.moraes@vectorinf.com.br"
       },
-      "source": "./plugins/multi-agent-os",
+      "source": {
+        "source": "github",
+        "repo": "ekson73/multi-agent-os",
+        "sha": "be1737b9521653d6b09f7ff84c907e2a07f8f1eb"
+      },
       "category": "ai-agents",
       "repository": "https://github.com/ekson73/multi-agent-os",
       "license": "MIT",

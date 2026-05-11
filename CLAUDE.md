@@ -20,7 +20,7 @@ This file provides guidance to Claude Code when working with this repository.
 ## Architecture
 
 ```
-eko-claude-plugins/                    # Marketplace root
+eko-claude-plugins/                    # Marketplace root (this repo)
 ├── .claude-plugin/
 │   └── marketplace.json                 # Plugin registry (source of truth)
 ├── .gitignore                           # Git exclusions
@@ -28,6 +28,9 @@ eko-claude-plugins/                    # Marketplace root
 ├── CLAUDE.md                            # This file (AI guidance)
 ├── LICENSE                              # MIT License
 └── README.md                            # Public documentation
+```
+
+**Pattern**: Official Anthropic [`github` source type](https://code.claude.com/docs/en/plugin-marketplaces#plugin-sources). Zero vendoring, zero submodules. Plugins fetched fresh by Claude Code from upstream at pinned SHA (v1.4.0+).
 ```
 
 ### Key Distinction
@@ -53,9 +56,9 @@ eko-claude-plugins/                    # Marketplace root
 
 ## Registered Plugins
 
-| Plugin | Source | Version | Status |
-|--------|--------|---------|--------|
-| [multi-agent-os](https://github.com/ekson73/multi-agent-os) | `ekson73/multi-agent-os` | 1.5.0 | Active |
+| Plugin | Source type | Upstream | Version | SHA pin | Status |
+|--------|-------------|----------|---------|---------|--------|
+| `maos` | `github` (official Anthropic) | [ekson73/multi-agent-os](https://github.com/ekson73/multi-agent-os) | 1.5.0 | `be1737b9` | Active |
 
 ---
 
