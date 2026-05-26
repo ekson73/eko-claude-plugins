@@ -3,6 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin%20Marketplace-blueviolet)](https://claude.ai/code)
 [![Plugins](https://img.shields.io/badge/Plugins-1-green)](https://github.com/ekson73/eko-claude-plugins)
+[![Branching: GitHub Flow](https://img.shields.io/badge/branching-GitHub%20Flow%20(Class%20B)-0a7bbb)](./AGENTS.md)
 
 Personal Claude Code plugin marketplace by [Emilson Moraes](https://github.com/ekson73).
 

@@ -419,3 +419,7 @@ This deep analysis was performed by `Claude-QA-c614-mkt-deep` to comprehensively
 ---
 
 *Deep QA Analysis by Claude-QA-c614-mkt-deep | 2026-01-08T16:10:00-03:00*
+
+## Branching & Release Model
+
+**GitHub Flow (Class B — marketplace).** Canonical SSOT: [`AGENTS.md`](./AGENTS.md) §"Branching & Release Model" + `docs/adrs/ADR-002-github-flow-branching.md`. No environment branches here; consumer source-pin = float per ADR-001.

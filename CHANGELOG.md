@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- **docs(branching)**: documented GitHub Flow (Class B) in new `AGENTS.md` (SSOT) + `ADR-002`; added GEMINI.md / Copilot pointers; README badge. Companion to ADR-001 (source float).
+
 ## [1.4.0] - 2026-05-12
 
 ### Changed
