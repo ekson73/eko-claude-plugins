@@ -1,6 +1,6 @@
 {
   "name": "eko-claude-plugins",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "owner": {
     "name": "Emilson Moraes",
     "email": "emilson.moraes@gmail.com",
@@ -11,13 +11,12 @@
     "repository": "https://github.com/ekson73/eko-claude-plugins",
     "license": "MIT",
     "homepage": "https://github.com/ekson73/eko-claude-plugins",
-    "lastUpdated": "2026-05-12"
+    "lastUpdated": "2026-05-26"
   },
   "plugins": [
     {
       "name": "maos",
       "description": "MAOS (Multi-Agent OS) - Coordination Framework for AI Agents with Orchestration, Sentinel Protocol, Worktree Policy, Status Maps",
-      "version": "1.5.0",
       "author": {
         "name": "Vek - Desenvolvimento de Software",
         "email": "emilson.moraes@vectorinf.com.br"
@@ -25,7 +24,7 @@
       "source": {
         "source": "github",
         "repo": "ekson73/multi-agent-os",
-        "sha": "fe375bc14abd9f7f5916e162bbfbf3b9fa6d9398"
+        "ref": "main"
       },
       "category": "ai-agents",
       "repository": "https://github.com/ekson73/multi-agent-os",
