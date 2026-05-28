@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **`maos` ships `maos-concierge`** (upstream `ekson73/multi-agent-os` v1.6.0, PR #97, merged) — onboarding/guide/router/governance-anchor skill over the whole MAOS framework (6 modes). Delivered automatically via the `ref:main` float (ADR-001); README plugin table refreshed to upstream v1.6.0. No `marketplace.json` change required (float + upstream `plugin.json` version SSOT).
+
 - **docs(branching)**: documented GitHub Flow (Class B) in new `AGENTS.md` (SSOT) + `ADR-002`; added GEMINI.md / Copilot pointers; README badge. Companion to ADR-001 (source float).
 
 ## [1.4.0] - 2026-05-12
