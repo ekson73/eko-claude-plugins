@@ -24,7 +24,7 @@ claude plugin install multi-agent-os
 
 | Plugin | Description | Version | Category | Source |
 |--------|-------------|---------|----------|--------|
-| [maos](https://github.com/ekson73/multi-agent-os) | Multi-Agent Coordination Framework | 1.5.0 | AI Agents | `github:ekson73/multi-agent-os` pinned at SHA `be1737b9` |
+| [maos](https://github.com/ekson73/multi-agent-os) | Multi-Agent Coordination Framework | 1.6.0 | AI Agents | `github:ekson73/multi-agent-os` @ `main` (float, ADR-001) — ships `maos-concierge` |
 
 ## Plugin Details
 
