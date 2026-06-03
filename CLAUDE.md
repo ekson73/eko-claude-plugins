@@ -30,8 +30,7 @@ eko-claude-plugins/                    # Marketplace root (this repo)
 └── README.md                            # Public documentation
 ```
 
-**Pattern**: Official Anthropic [`github` source type](https://code.claude.com/docs/en/plugin-marketplaces#plugin-sources). Zero vendoring, zero submodules. Plugins fetched fresh by Claude Code from upstream at pinned SHA (v1.4.0+).
-```
+**Pattern**: Official Anthropic [`github` source type](https://code.claude.com/docs/en/plugin-marketplaces#plugin-sources). Zero vendoring, zero submodules. Plugins are fetched fresh by Claude Code from their upstream repos, **tracking the default branch** (`"ref": "main"`, float — no SHA pin) per [ADR-001](./docs/adrs/ADR-001-float-marketplace-sources.md).
 
 ### Key Distinction
 
@@ -40,7 +39,7 @@ eko-claude-plugins/                    # Marketplace root (this repo)
 | Purpose | **Marketplace** (index of plugins) | **Plugin** (actual functionality) |
 | Key File | `marketplace.json` | `plugin.json` |
 | Contains | Plugin references | Commands, agents, skills, hooks |
-| Installation | `claude plugin marketplace add` | `claude plugin install` |
+| Installation | in-session `/plugin marketplace add ekson73/eko-claude-plugins` | `/plugin install <name>@eko-claude-plugins` |
 
 ---
 
@@ -48,7 +47,7 @@ eko-claude-plugins/                    # Marketplace root (this repo)
 
 | File | Purpose | Update Frequency |
 |------|---------|------------------|
-| `marketplace.json` | Plugin registry with versions | On plugin release |
+| `marketplace.json` | Plugin registry (float `github` sources — no per-plugin version) | On add/remove/re-pin |
 | `CHANGELOG.md` | Version history | On every release |
 | `README.md` | User-facing documentation | On feature changes |
 
@@ -56,9 +55,11 @@ eko-claude-plugins/                    # Marketplace root (this repo)
 
 ## Registered Plugins
 
-| Plugin | Source type | Upstream | Version | SHA pin | Status |
-|--------|-------------|----------|---------|---------|--------|
-| `maos` | `github` (official Anthropic) | [ekson73/multi-agent-os](https://github.com/ekson73/multi-agent-os) | 1.5.0 | `be1737b9` | Active |
+| Plugin | Source type | Upstream | Source pin | Status |
+|--------|-------------|----------|------------|--------|
+| `maos` | `github` (official Anthropic) | [ekson73/multi-agent-os](https://github.com/ekson73/multi-agent-os) | `ref: main` (float, ADR-001) | Active |
+
+> Versions are **not** pinned at the marketplace layer (float) — each plugin's canonical semver lives in its own upstream `plugin.json`.
 
 ---
 
@@ -72,25 +73,22 @@ eko-claude-plugins/                    # Marketplace root (this repo)
    {
      "name": "plugin-name",
      "description": "Short description",
-     "version": "x.y.z",
      "author": { "name": "...", "email": "..." },
-     "source": { "source": "github", "repo": "owner/repo" },
+     "source": { "source": "github", "repo": "owner/repo", "ref": "main" },
      "category": "category-slug",
      "repository": "https://github.com/owner/repo",
      "license": "MIT",
      "keywords": ["keyword1", "keyword2"]
    }
    ```
+   > **No `version` field** (float, ADR-001) — a per-plugin `version` breaks `/plugin update`; semver lives in the plugin's upstream `plugin.json`. Source uses `"ref": "main"`.
 3. Update `README.md` plugin table
 4. Add entry to `CHANGELOG.md`
 5. Commit with message: `feat(marketplace): add {plugin-name} v{version}`
 
-### Updating a Plugin Version
+### Updating a Plugin
 
-1. Update `version` in `marketplace.json`
-2. Update version in `README.md` table
-3. Add entry to `CHANGELOG.md`
-4. Commit: `feat({plugin-name}): bump to v{version}`
+**Routine version updates need no marketplace change** — entries float on `main`, so new upstream commits are picked up on the next `/plugin marketplace update` (ADR-001). Only edit `marketplace.json` to add/remove/re-describe a plugin, or to **re-pin a `sha`** on a supply-chain incident (supersedes `ref`). Then bump the top-level marketplace `version` + `CHANGELOG.md` + PR.
 
 ### Removing a Plugin
 
@@ -124,8 +122,8 @@ eko-claude-plugins/                    # Marketplace root (this repo)
 
 ### Versioning
 
-- **Marketplace version**: Tracks structural changes to marketplace itself
-- **Plugin versions**: Tracked independently per plugin in `marketplace.json`
+- **Marketplace version**: Tracks structural changes to the catalog itself (top-level `marketplace.json` `version`)
+- **Plugin versions**: live in each plugin's **upstream `plugin.json`** (NOT in `marketplace.json` — float per ADR-001)
 - Follow [Semantic Versioning 2.0.0](https://semver.org/)
 
 ### Commit Messages
