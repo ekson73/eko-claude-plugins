@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **docs(branching)**: documented GitHub Flow (Class B) in new `AGENTS.md` (SSOT) + `ADR-002`; added GEMINI.md / Copilot pointers; README badge. Companion to ADR-001 (source float).
 
+### Fixed
+- **docs(readme)**: harmonize install/config/usage to the cross-repo SSOT structure (mirrors `vek-im/vek-claude-plugins#9` + `ekson73/multi-agent-os#108`). Two real fixes for humans **and** agents: (1) invalid `claude plugin install multi-agent-os` → in-session `/plugin install maos@eko-claude-plugins` (correct **plugin name** `maos` ≠ repo `multi-agent-os`); (2) removed the **SHA-pin self-contradiction** — the Installation block claimed "pinned SHA / `source.sha`" while the plugin table + ADR-001 say float (`ref: main`). Added plugin-name-vs-repo + `/maos:<name>` namespace note, Use/Update/Troubleshooting sections, and marked component counts **representative** (+ `/maos:maos-concierge` discovery pointer) to resist re-drift. MIT/community/cross-vendor (AAIF) preserved. Docs-only, zero behavior change.
+
 ## [1.4.0] - 2026-05-12
 
 ### Changed
