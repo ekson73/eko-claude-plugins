@@ -47,7 +47,7 @@ eko-claude-plugins/                    # Marketplace root (this repo)
 
 | File | Purpose | Update Frequency |
 |------|---------|------------------|
-| `marketplace.json` | Plugin registry (float `github` sources — no per-plugin version) | On add/remove/re-pin |
+| `marketplace.json` | Plugin registry (float `url` HTTPS sources — no per-plugin version) | On add/remove/re-pin |
 | `CHANGELOG.md` | Version history | On every release |
 | `README.md` | User-facing documentation | On feature changes |
 
