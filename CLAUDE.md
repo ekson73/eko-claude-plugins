@@ -30,7 +30,7 @@ eko-claude-plugins/                    # Marketplace root (this repo)
 └── README.md                            # Public documentation
 ```
 
-**Pattern**: Official Anthropic [`github` source type](https://code.claude.com/docs/en/plugin-marketplaces#plugin-sources). Zero vendoring, zero submodules. Plugins are fetched fresh by Claude Code from their upstream repos, **tracking the default branch** (`"ref": "main"`, float — no SHA pin) per [ADR-001](./docs/adrs/ADR-001-float-marketplace-sources.md).
+**Pattern**: Official Anthropic [`url` source type](https://code.claude.com/docs/en/plugin-marketplaces#plugin-sources) with an explicit `https://` URL — forces HTTPS transport (cross-OS incl. Windows). ⚠️ The `github` shorthand source clones over **SSH** (`git@github.com:`), which hard-fails on fresh Windows machines (`No ED25519 host key … Host key verification failed`) — do not use it for GitHub plugins. Zero vendoring, zero submodules. Plugins are fetched fresh by Claude Code from their upstream repos, **tracking the default branch** (`"ref": "main"`, float — no SHA pin) per [ADR-001](./docs/adrs/ADR-001-float-marketplace-sources.md).
 
 ### Key Distinction
 
@@ -57,7 +57,7 @@ eko-claude-plugins/                    # Marketplace root (this repo)
 
 | Plugin | Source type | Upstream | Source pin | Status |
 |--------|-------------|----------|------------|--------|
-| `maos` | `github` (official Anthropic) | [ekson73/multi-agent-os](https://github.com/ekson73/multi-agent-os) | `ref: main` (float, ADR-001) | Active |
+| `maos` | `url` (HTTPS, official Anthropic) | [ekson73/multi-agent-os](https://github.com/ekson73/multi-agent-os) | `ref: main` (float, ADR-001) | Active |
 
 > Versions are **not** pinned at the marketplace layer (float) — each plugin's canonical semver lives in its own upstream `plugin.json`.
 
@@ -74,7 +74,7 @@ eko-claude-plugins/                    # Marketplace root (this repo)
      "name": "plugin-name",
      "description": "Short description",
      "author": { "name": "...", "email": "..." },
-     "source": { "source": "github", "repo": "owner/repo", "ref": "main" },
+     "source": { "source": "url", "url": "https://github.com/owner/repo.git", "ref": "main" },
      "category": "category-slug",
      "repository": "https://github.com/owner/repo",
      "license": "MIT",

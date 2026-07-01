@@ -1,6 +1,6 @@
 {
   "name": "eko-claude-plugins",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "owner": {
     "name": "Emilson Moraes",
     "email": "emilson.moraes@gmail.com",
@@ -22,8 +22,8 @@
         "email": "emilson.moraes@vectorinf.com.br"
       },
       "source": {
-        "source": "github",
-        "repo": "ekson73/multi-agent-os",
+        "source": "url",
+        "url": "https://github.com/ekson73/multi-agent-os.git",
         "ref": "main"
       },
       "category": "ai-agents",

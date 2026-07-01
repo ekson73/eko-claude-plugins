@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - **docs(readme)**: harmonize install/config/usage to the cross-repo SSOT structure (mirrors `vek-im/vek-claude-plugins#9` + `ekson73/multi-agent-os#108`). Two real fixes for humans **and** agents: (1) invalid `claude plugin install multi-agent-os` → in-session `/plugin install maos@eko-claude-plugins` (correct **plugin name** `maos` ≠ repo `multi-agent-os`); (2) removed the **SHA-pin self-contradiction** — the Installation block claimed "pinned SHA / `source.sha`" while the plugin table + ADR-001 say float (`ref: main`). Added plugin-name-vs-repo + `/maos:<name>` namespace note, Use/Update/Troubleshooting sections, and marked component counts **representative** (+ `/maos:maos-concierge` discovery pointer) to resist re-drift. Also harmonized **`CLAUDE.md`** (agent-facing doc, per Qodo review): `claude plugin …` shell installs → in-session `/plugin`; removed pinned-SHA + per-plugin-`version` guidance → float (ADR-001) consistency (it was contradicting README/AGENTS.md/ADR-001). MIT/community/cross-vendor (AAIF) preserved. Docs-only, zero behavior change.
 
+## [1.5.1] - 2026-07-01
+
+### Fixed
+- **fix(windows/transport): `maos` source `github` → `url` (explicit HTTPS).** Windows devs (VS Code + claude-code extension) failed to install with `No ED25519 host key is known for github.com … Host key verification failed`. Root cause: Claude Code clones the `github` source type over **SSH** (`git@github.com:`); fresh Windows has an empty `~/.ssh/known_hosts` and Claude Code suppresses the host-key prompt → the clone hard-fails before auth (macOS unaffected — key cached). Fix: `maos` source converted to `{"source":"url","url":"https://github.com/ekson73/multi-agent-os.git","ref":"main"}`, forcing HTTPS transport. ADR-001 float preserved (`url` supports `ref:main`). `CLAUDE.md` source-policy updated to prefer `url`+`https://` and mark `github` shorthand ⚠️ AVOID. Empirical: 44/44 `github`-source clones in a real cache used `git@github.com:`; all `url`-source clones used `https://`. Sibling: `vek-im/vek-claude-plugins` v1.5.1 (same fix).
+
 ## [1.4.0] - 2026-05-12
 
 ### Changed
