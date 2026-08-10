@@ -29,7 +29,12 @@ key_to_host = {
 missing = []
 for entry in cat["entries"]:
     for key, meta in entry["providers"].items():
-        assert meta.get("status") in ("ready", "pending-upstream", "docs", "n/a"), key
+        st = meta.get("status")
+        assert st in ("ready", "pending-upstream", "docs", "n/a"), key
+        if st == "ready":
+            assert meta.get("install"), f"ready {key} missing install"
+        if st == "docs" and meta.get("kind") == "skills-cli-pointer":
+            assert meta.get("install"), f"docs {key} missing install"
         host = key_to_host.get(key)
         if host and not (root / "hosts" / host / "README.md").is_file():
             missing.append(f"hosts/{host}/README.md")
@@ -37,5 +42,6 @@ assert not missing, missing
 hold = (root / "docs/P3-RENAME-HOLD.md").read_text()
 assert "RENAME_HOLD=active" in hold
 assert (root / "docs/plans/P3-rename-cutover-plan.md").is_file()
-print("OK validate-catalog", mp["version"], cat.get("version"), "HOLD+PLAN present")
+assert (root / "docs/MULTI-HARNESS-COMPAT.md").is_file()
+print("OK validate-catalog", mp["version"], cat.get("version"), "HOLD+PLAN+COMPAT present")
 PY

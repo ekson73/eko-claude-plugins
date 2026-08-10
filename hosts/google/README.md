@@ -2,20 +2,23 @@
 
 | Field | Value |
 |---|---|
-| **eko status** | `docs` |
-| **Domain** | distribution pointer only — **no** agentic-tools in eko |
-| **Upstream product example** | `maos` → https://github.com/ekson73/multi-agent-os |
-| **Catalog** | `registry/catalog.json` → `providers.google` (or mapped key) |
+| **Gemini eko status** | `docs` |
+| **Antigravity eko status** | `docs` |
+| **Domain** | distribution pointer only |
+| **Upstream** | https://github.com/ekson73/multi-agent-os |
+| **Compat matrix** | [MULTI-HARNESS-COMPAT.md](../../docs/MULTI-HARNESS-COMPAT.md) |
 
-## Gemini CLI — status `docs`
-Open-source agent with **extensions** (path/config), not a multi-tenant plugin marketplace eko owns.
+## Gemini CLI — portable skills path
+```bash
+npx skills add ekson73/multi-agent-os -g -a gemini-cli
+```
+Gemini also supports **extensions** (host-native). eko does **not** publish Gemini extensions; we document the portable skills discovery line. If `-a gemini-cli` is rejected by your skills CLI version, use `-a '*'`.
 
-eko action: document install/discovery patterns when stable; do **not** invent a fake marketplace.json for Gemini.
+## Antigravity — best-effort
+```bash
+npx skills add ekson73/multi-agent-os -g -a '*' -y
+```
+No stable third-party pack registry comparable to Claude/Pi. Keep `docs` until an official install path can be pointer-locked as `ready`.
 
-## Antigravity — status `docs`
-Community/IDE surface evolving (many third-party setup repos, 2026-08). No stable third-party pack registry comparable to Claude/Pi.
-
-eko action: keep docs-only until an official extension/package install path is stable enough to pointer-lock.
-
-## Evidence (≈2026-08)
-google-gemini/gemini-cli ~106k★; Antigravity ecosystem noisy/community-led.
+## Not in eko
+Fabricated `marketplace.json` for Gemini · agentic-tool trees.

@@ -17,5 +17,14 @@ First-class **plugin marketplace** (Anthropic). This hub *is* a Claude marketpla
 ```
 Update: `/plugin marketplace update eko-claude-plugins`
 
+### Optional portable path (skills)
+```bash
+npx skills add ekson73/multi-agent-os -g -a claude-code
+```
+Prefer marketplace plugin for full maos commands/agents; skills path is cross-harness subset.
+
 ## Evidence (≈2026-08)
 Claude Code ~2.1.x; official docs heavily document marketplace/plugin; repo anthropics/claude-code very active.
+
+## Multi-harness
+See [MULTI-HARNESS-COMPAT.md](../../docs/MULTI-HARNESS-COMPAT.md) for the full install matrix (native + skills paths).

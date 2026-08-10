@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.7.0] — 2026-08-10
+
+### Added
+- `docs/MULTI-HARNESS-COMPAT.md` — multi-AI-provider harness install matrix (native + skills.sh bridge)
+- catalog `compat` block + install lines for docs-tier providers (codex, gemini, copilot, kiro, warp, antigravity)
+- CI/script: require install on `ready` + `docs` skills-cli pointers; require MULTI-HARNESS-COMPAT.md
+
+### Changed
+- hosts/* concrete discovery recipes; hosts/README pi/opencode → ready (drift fix)
+- catalog version **0.3.0**
+
+
 ## [1.6.10] — 2026-08-10
 
 ### Fixed

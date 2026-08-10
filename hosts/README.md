@@ -1,12 +1,12 @@
 # Host install / discovery pointers
 
-Distribution **docs only**. Status SSOT: [`../registry/catalog.json`](../registry/catalog.json) · matrix: [`../docs/HOST-MATRIX-2026-08.md`](../docs/HOST-MATRIX-2026-08.md).
+Distribution **docs only**. Status SSOT: [`../registry/catalog.json`](../registry/catalog.json) · compat matrix: [`../docs/MULTI-HARNESS-COMPAT.md`](../docs/MULTI-HARNESS-COMPAT.md) · research: [`../docs/HOST-MATRIX-2026-08.md`](../docs/HOST-MATRIX-2026-08.md).
 
 | Dir | Host | Status |
 |---|---|---|
-| [claude/](./claude/) | Claude Code | ready |
-| [pi/](./pi/) | Pi | pending-upstream |
-| [opencode/](./opencode/) | OpenCode | pending-upstream |
+| [claude/](./claude/) | Claude Code | **ready** |
+| [pi/](./pi/) | Pi | **ready** |
+| [opencode/](./opencode/) | OpenCode | **ready** |
 | [openai/](./openai/) | Codex (+ ChatGPT n/a) | docs / n/a |
 | [google/](./google/) | Gemini CLI + Antigravity | docs |
 | [microsoft/](./microsoft/) | VS Code n/a + GH Copilot docs | docs / n/a |
