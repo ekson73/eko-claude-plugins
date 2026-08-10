@@ -54,5 +54,6 @@ jobs:
               sys.exit(1)
           hold = (root / "docs/P3-RENAME-HOLD.md").read_text()
           assert "RENAME_HOLD=active" in hold
+          assert (root / "docs/plans/P3-rename-cutover-plan.md").is_file()
           print("OK", mp["version"], cat.get("version"), "HOLD active, hosts aligned")
           PY

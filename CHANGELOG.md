@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.6.8] — 2026-08-10
+
+### Added
+- `docs/plans/P3-rename-cutover-plan.md` — two-phase cutover (GitHub vs marketplace id); session policy; checklists
+- `scripts/p3-rename-inventory.sh` — read-only blast radius
+- `scripts/validate-catalog.sh` — local dogfood of CI rules
+
+### Changed
+- ROADMAP: P3-PLAN drafted; execution = P3-GO HITL
+- P3-RENAME-HOLD + ADR-004 link to plan; CI requires plan file while HOLD active
+
+
 ## [1.6.7] — 2026-08-10
 
 ### Added
