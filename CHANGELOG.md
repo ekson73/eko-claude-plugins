@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.5] — 2026-08-10
+
+### Changed
+- catalog: **pi** + **opencode** → `ready` (multi-agent-os packaging PR #315; issues #313/#314)
+- hosts/pi + hosts/opencode install docs updated
+- ROADMAP P2b complete
+
+
 ## [1.6.4] — 2026-08-10
 
 ### Added

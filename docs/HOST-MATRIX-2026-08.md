@@ -10,8 +10,8 @@
 | Host | Version / signal | Packaging surface | eko action |
 |---|---|---|---|
 | **Claude Code** | CLI ~2.1.224; anthropics/claude-code ~141k★ | **Marketplace + plugin** first-class | **MUST ready** — this repo *is* the Claude marketplace |
-| **OpenCode** | npm ~1.18.x; ~196k★; plugins docs | **Plugin** npm/local + skills + MCP | **SHOULD** pointer; `pending-upstream` until MAOS plugin package |
-| **Pi** | pi-coding-agent **0.84.1**; pi.dev packages | **Package** npm/git | **SHOULD** pointer; `pending-upstream` until MAOS pi-package |
+| **OpenCode** | npm ~1.18.x; ~196k★; plugins docs | **Plugin** npm/local + skills + MCP | **ready** — `packaging/opencode-maos` + skills via npx skills (MAOS #315) |
+| **Pi** | pi-coding-agent **0.84.1**; pi.dev packages | **Package** npm/git | **ready** — root `package.json` pi.skills (MAOS #315) |
 | **Codex** | ~105k★; Skills docs | Skills + MCP (not Claude MP) | **SHOULD docs** — `npx skills add` → upstream |
 | **ChatGPT** | Plugins/GPT store | OpenAI-owned store | **N/A** |
 | **Gemini CLI** | ~106k★ | Extensions | **COULD docs** |

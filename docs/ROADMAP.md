@@ -11,14 +11,14 @@
 ## Next (VKS-2620)
 | Phase | Tasks | Owner | Status |
 |---|---|---|---|
-| **P2b** | GitHub issues on `multi-agent-os`: (1) pi-package manifest (2) OpenCode plugin package; paste issue URLs into catalog notes | MAOS + eko catalog note | ⬜ |
+| **P2b** | MAOS pi-package + OpenCode plugin + catalog flip ready | MAOS #315 + eko | ✅ |
 | **P2c** | Optional: CI job render hosts table from catalog.json | eko | ⬜ |
 | **P3** | GitHub rename `eko-claude-plugins` → `eko-plugin-marketplace` + consumer BC (MAOS README, vek-claude-plugins, plugins-provenance, install snippets) | eko + consumers | ⬜ |
 | **P3b** | Post-rename dual-name note 1 cycle; then drop BC paths | eko | ⬜ |
 
 ## Effort priority (Aug 2026, honest)
 1. **Claude** — keep marketplace green (only full `ready` mall eko owns)
-2. **Pi + OpenCode** — after MAOS scaffolds (`pending-upstream` → `ready`)
+2. **Pi + OpenCode** — **ready** (MAOS #315 packaging)
 3. **Codex** — docs via skills.sh pointer only
 4. **Copilot / Kiro / Warp / Gemini / Antigravity** — docs-only
 5. **Never as eko marketplace:** Grok, Muse, ChatGPT store, VS Code VSIX-as-eko-product

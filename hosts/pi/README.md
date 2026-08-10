@@ -2,24 +2,15 @@
 
 | Field | Value |
 |---|---|
-| **eko status** | `pending-upstream` |
-| **Domain** | distribution pointer only — **no** agentic-tools in eko |
-| **Upstream product example** | `maos` → https://github.com/ekson73/multi-agent-os |
-| **Catalog** | `registry/catalog.json` → `providers.pi` (or mapped key) |
+| **eko status** | `ready` |
+| **Domain** | distribution pointer only |
+| **Upstream** | https://github.com/ekson73/multi-agent-os |
 
-## Why in eko
-Pi has a real **package** system (`pi install npm:|git:`) + [Package Catalog](https://pi.dev/packages). eko can only **point**.
-
-## Planned install (when MAOS exposes pi-package)
+## Install
 ```bash
 pi install git:github.com/ekson73/multi-agent-os@main
 ```
-
-## Blocker (not eko work)
-`multi-agent-os` needs a valid **pi-package** manifest (`package.json` `pi` key / conventional dirs). Until then status stays `pending-upstream`.
-
-## Evidence (≈2026-08)
-`@earendil-works/pi-coding-agent` **0.84.1**; catalog is npm-backed packages (extensions/skills/prompts/themes).
+Loads MAOS `skills/` via root `package.json` (`keywords: pi-package`, `pi.skills`).
 
 ## Tracking
-- https://github.com/ekson73/multi-agent-os/issues/313
+- https://github.com/ekson73/multi-agent-os/issues/313 (done via PR #315)

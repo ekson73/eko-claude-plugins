@@ -2,22 +2,22 @@
 
 | Field | Value |
 |---|---|
-| **eko status** | `pending-upstream` |
-| **Domain** | distribution pointer only — **no** agentic-tools in eko |
-| **Upstream product example** | `maos` → https://github.com/ekson73/multi-agent-os |
-| **Catalog** | `registry/catalog.json` → `providers.opencode` (or mapped key) |
+| **eko status** | `ready` |
+| **Domain** | distribution pointer only |
+| **Upstream** | https://github.com/ekson73/multi-agent-os |
 
-## Why in eko
-OpenCode documents **Plugins** (npm/local) + Agent Skills + MCP. eko lists a **pointer**, does not vendor plugin code.
+## Install — thin plugin (local file)
+```bash
+mkdir -p ~/.config/opencode/plugins
+curl -fsSL -o ~/.config/opencode/plugins/maos.js \
+  https://raw.githubusercontent.com/ekson73/multi-agent-os/main/packaging/opencode-maos/index.js
+```
+Restart OpenCode. Package source: `packaging/opencode-maos/` (npm name `opencode-maos` when published).
 
-## Planned install (when upstream ships OpenCode plugin package)
-See OpenCode docs: plugins from npm or local path. Exact package name TBD on `multi-agent-os`.
-
-## Blocker
-MAOS (or another upstream) must publish an OpenCode-shaped plugin. eko flips to `ready` only then.
-
-## Evidence (≈2026-08)
-anomalyco/opencode ~196k★, pushed 2026-08-10; HN “Yet Another OpenCode Plugin”; npm `opencode` ~1.18.x.
+## Skills (agentic-tools — upstream)
+```bash
+npx skills add ekson73/multi-agent-os -g -a opencode
+```
 
 ## Tracking
-- https://github.com/ekson73/multi-agent-os/issues/314
+- https://github.com/ekson73/multi-agent-os/issues/314 (done via PR #315)
