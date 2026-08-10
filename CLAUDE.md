@@ -9,7 +9,7 @@ This file provides guidance to Claude Code when working with this repository.
 
 ## Repository Overview
 
-**eko-claude-plugins** is a personal Claude Code plugin marketplace owned by [Emilson Moraes](https://github.com/ekson73).
+**eko-claude-plugins** (target rename **`eko-plugin-marketplace`**, DECIDED) is the personal Eko **multi-host plugin marketplace / distribution hub** owned by [Emilson Moraes](https://github.com/ekson73). Claude marketplace adapter is primary; see `docs/NAMING.md` + `registry/catalog.json`. Not a product monorepo.
 
 **Purpose**: Centralized distribution of Claude Code plugins developed for AI agent workflows and multi-agent coordination.
 

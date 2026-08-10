@@ -1,6 +1,6 @@
 # ADR-004: Rename eko-claude-plugins → eko-plugin-marketplace
 
-- **Status**: Accepted (execution deferred to Phase P3)
+- **Status**: **DECIDED** — operator accepted Anima default **A** (2026-08-10); GitHub rename still Phase P3
 - **Date**: 2026-08-10 (revised same-day — overturned interim `eko-pack-index`)
 - **Name authority**: Anima council re-run after operator gloss-independence critique
 
@@ -45,3 +45,8 @@ Operator asked to include `eko-plugins-marketplace` and `eko-{agent,agents,agent
 | Long OK-but-heavy | `eko-agentic-plugin-marketplace` |
 
 Full table: akasha `docs/decisions/ADR-eko-plugin-marketplace-naming-council-r3-2026-08-10.md`.
+
+## Operator acceptance
+- **2026-08-10:** Operator chose **A)** `eko-plugin-marketplace` (Anima default).  
+- Not B (`eko-plugins-marketplace`) · not C (`eko-agentic-plugin-marketplace`).  
+- Naming closed; remaining work is implementation roadmap (P2/P3), not re-litigation.

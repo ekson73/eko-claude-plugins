@@ -1,36 +1,80 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/ekson73/eko-claude-plugins/registry/catalog.schema.json",
-  "title": "eko-pack-index catalog",
+  "title": "eko-plugin-marketplace catalog",
   "type": "object",
-  "required": ["catalog", "version", "entries"],
+  "required": [
+    "catalog",
+    "version",
+    "entries"
+  ],
   "properties": {
-    "catalog": { "type": "string" },
-    "version": { "type": "string" },
-    "description": { "type": "string" },
-    "formerly": { "type": "string" },
-    "domain": { "const": "distribution" },
+    "catalog": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "formerly": {
+      "type": "string"
+    },
+    "domain": {
+      "const": "distribution"
+    },
     "entries": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "upstream", "providers"],
+        "required": [
+          "id",
+          "upstream",
+          "providers"
+        ],
         "properties": {
-          "id": { "type": "string" },
-          "upstream": { "type": "string", "format": "uri" },
-          "license": { "type": "string" },
+          "id": {
+            "type": "string"
+          },
+          "upstream": {
+            "type": "string",
+            "format": "uri"
+          },
+          "license": {
+            "type": "string"
+          },
           "providers": {
             "type": "object",
             "additionalProperties": {
               "type": "object",
-              "required": ["status"],
+              "required": [
+                "status"
+              ],
               "properties": {
-                "status": { "enum": ["ready", "pending-upstream", "docs", "n/a"] },
-                "kind": { "type": "string" },
-                "install": { "type": "string" },
-                "note": { "type": "string" },
-                "reason": { "type": "string" },
-                "marketplace": { "type": "string" }
+                "status": {
+                  "enum": [
+                    "ready",
+                    "pending-upstream",
+                    "docs",
+                    "n/a"
+                  ]
+                },
+                "kind": {
+                  "type": "string"
+                },
+                "install": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "marketplace": {
+                  "type": "string"
+                }
               }
             }
           }

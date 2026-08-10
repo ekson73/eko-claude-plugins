@@ -1,7 +1,7 @@
 {
   "$schema": "./catalog.schema.json",
   "catalog": "eko-plugin-marketplace",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Eko multi-host plugin marketplace / distribution index (pointers only). Target repo name eko-plugin-marketplace. No agentic-tool payloads.",
   "formerly": "eko-claude-plugins",
   "domain": "distribution",
@@ -78,6 +78,9 @@
     "rejected_interim": [
       "eko-pack-index"
     ],
-    "runner_up": "eko-plugin-catalog"
+    "runner_up": "eko-plugin-catalog",
+    "decided": "2026-08-10",
+    "operator_hitl": "A",
+    "status": "DECIDED"
   }
 }

@@ -2,7 +2,7 @@
 
 > Vendor-neutral single source of truth for AI agents working in this repo. Vendor-specific files (`CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`) are **thin pointers** to this file. For marketplace-specific guidance see [`CLAUDE.md`](./CLAUDE.md).
 
-This repo is a **Claude Code plugin marketplace** — **Class B** (consumed by users, **not** deployed to environments).
+This repo is the **Eko Plugin Marketplace** hub (target name `eko-plugin-marketplace`; GitHub BC `eko-claude-plugins`) — multi-host **distribution index** with Claude marketplace adapter — **Class B** (consumed by users, **not** deployed to environments).
 
 ## Domain (ADR-003) — DISTRIBUTION ONLY
 
@@ -11,6 +11,8 @@ This repo is a **pack index / marketplace hub**, not a product monorepo.
 **MUST NOT add:** `skills/`, `agents/`, `commands/` (product), `hooks/` logic trees, `mcp-tools/`, vendored plugin source.
 
 **MAY add:** `registry/`, `hosts/*/`, marketplace manifests, install docs, ADRs about distribution.
+
+Naming lock → [`docs/NAMING.md`](./docs/NAMING.md) (DECIDED: `eko-plugin-marketplace`).
 
 Product work → `ekson73/multi-agent-os` (and other upstreams listed in `registry/catalog.json`).
 
