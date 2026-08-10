@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.8.1] — 2026-08-10
+
+### Changed
+- Research dogfood PDCA: `npx skills -l` found 2 MAOS SKILL.md skipped → fixed upstream MAOS 1.22.1
+- catalog **0.4.1** compat.dogfood + maos_version_floor
+- ADR-003 addendum: Pi/OpenCode **ready** (no longer pending-upstream)
+- MULTI-HARNESS: recommend MAOS ≥1.22.1
+
+
 ## [1.8.0] — 2026-08-10
 
 ### Added
