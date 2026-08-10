@@ -2,22 +2,30 @@
 
 | Field | Value |
 |---|---|
-| **VS Code eko status** | `n/a` |
-| **GH Copilot eko status** | `docs` |
-| **Domain** | distribution pointer only |
-| **Upstream** | https://github.com/ekson73/multi-agent-os |
-| **Compat matrix** | [MULTI-HARNESS-COMPAT.md](../../docs/MULTI-HARNESS-COMPAT.md) |
+| **VS Code** | `n/a` |
+| **GH Copilot** | `docs` |
+| **Research** | [HOST-RESEARCH-2026-08.md](../../docs/research/HOST-RESEARCH-2026-08.md) |
 
-## GitHub Copilot — portable skills path
+## GitHub Copilot (2026)
+Official extensibility (cloud agent / agents docs):
+- **Agent Skills** (instructions, scripts, resources)
+- **Custom agents**
+- **Hooks**
+- **MCP servers**
+
+eko does **not** clone the Claude marketplace into Copilot. Discovery bridge:
+
 ```bash
 npx skills add ekson73/multi-agent-os -g -a github-copilot
+# or
+npx skills add ekson73/multi-agent-os -g -a '*' -y
 ```
-Copilot also documents native **Plugins, Skills, MCP, Hooks**. Formats ≠ Claude `marketplace.json`. skills.sh is the **eko discovery bridge** into MAOS content.
 
-If agent id differs in your CLI: `npx skills add ekson73/multi-agent-os -g -a '*' -y`.
+Docs: [About agent skills](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills).
 
-## VS Code Marketplace — `n/a`
-Editor extension marketplace is the wrong abstraction for eko-as-agent-pack-index. No VSIX product in scope.
+## VS Code Marketplace
+Editor extensions. **n/a** for eko-as-agent-pack-index. No VSIX product.
 
-## Not in eko
-VSIX that pretends to be a universal agent marketplace.
+## Verdict
+| eko Copilot “marketplace.json” | **No** |
+| skills.sh pointer | **Yes** |

@@ -1,18 +1,32 @@
-# AWS Kiro
+# AWS Kiro (+ Crew)
 
 | Field | Value |
 |---|---|
-| **eko status** | `docs` |
+| **Kiro eko status** | `docs` |
+| **Kiro Crew eko status** | `docs` (feature surface, not separate mall) |
 | **Domain** | distribution pointer only |
 | **Upstream** | https://github.com/ekson73/multi-agent-os |
-| **Compat matrix** | [MULTI-HARNESS-COMPAT.md](../../docs/MULTI-HARNESS-COMPAT.md) |
+| **Research** | [HOST-RESEARCH-2026-08.md](../../docs/research/HOST-RESEARCH-2026-08.md) |
 
-## Discovery install
+## Kiro packaging surfaces (honest)
+| Surface | eko role |
+|---|---|
+| **Agent Skills** | Document `npx skills add … -a kiro` |
+| **MCP** | Link only; servers live upstream if any |
+| **ACP / AGENTS.md** | Repo-native; MAOS ships AGENTS.md upstream |
+| **Open VSX extensions** | **Not** published by eko |
+| **Crew** | In-product multi-agent orchestration — configure inside Kiro after skills land |
+
+## Install
 ```bash
 npx skills add ekson73/multi-agent-os -g -a kiro
+# fallback
+npx skills add ekson73/multi-agent-os -g -a '*' -y
 ```
-Kiro surfaces: **ACP**, **AGENTS.md**, **Skills**, **MCP**, **Open VSX**.
 
-eko does **not** become an Open VSX publisher. Catalog line = find upstream packs (MAOS skills/MCP docs).
+## Kiro Crew
+Crew is **not** a third-party plugin marketplace. Catalog key `aws-kiro-crew` exists so amnesic agents do not invent a separate eko “crew registry”. Same skills install as Kiro; wire crews in the Kiro product UI/CLI.
 
-Fallback: `npx skills add ekson73/multi-agent-os -g -a '*' -y`.
+## Verdict
+| Build Open VSX maos? | **No** (unless operator product GO) |
+| Separate eko crew mall? | **No** |

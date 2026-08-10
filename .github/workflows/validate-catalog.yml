@@ -39,7 +39,7 @@ jobs:
               "codex": "openai", "chatgpt": "openai",
               "gemini": "google", "antigravity": "google",
               "vscode": "microsoft", "gh-copilot": "microsoft",
-              "aws-kiro": "aws-kiro", "warp": "warp",
+              "aws-kiro": "aws-kiro", "aws-kiro-crew": "aws-kiro", "warp": "warp",
               "grok": "_out-of-scope", "meta-muse-code": "_out-of-scope",
           }
           missing = []
@@ -55,6 +55,7 @@ jobs:
                   if host and not (root / "hosts" / host / "README.md").is_file():
                       missing.append(f"hosts/{host}/README.md (for {key})")
           assert (root / "docs/MULTI-HARNESS-COMPAT.md").is_file()
+assert (root / "docs/research/HOST-RESEARCH-2026-08.md").is_file()
           if missing:
               print("MISSING:", *missing, sep="\n ")
               sys.exit(1)

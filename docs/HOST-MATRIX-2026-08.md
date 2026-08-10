@@ -4,6 +4,8 @@
 > **Not:** agentic-tools content (skills, agents, commands, hooks, mcp servers).  
 > **Product SSOT:** upstreams e.g. `multi-agent-os` (`maos`).  
 > **Name:** DECIDED `eko-plugin-marketplace` (repo BC `eko-claude-plugins`).
+>
+> **Deep research + council:** [`research/HOST-RESEARCH-2026-08.md`](./research/HOST-RESEARCH-2026-08.md) (as-of 2026-08-10).
 
 ## Snapshot signals (Aug 2026)
 
@@ -14,11 +16,12 @@
 | **Pi** | pi-coding-agent **0.84.1**; pi.dev packages | **Package** npm/git | **ready** — root `package.json` pi.skills (MAOS #315) |
 | **Codex** | ~105k★; Skills docs | Skills + MCP (not Claude MP) | **SHOULD docs** — `npx skills add` → upstream |
 | **ChatGPT** | Plugins/GPT store | OpenAI-owned store | **N/A** |
-| **Gemini CLI** | ~106k★ | Extensions | **COULD docs** |
-| **Antigravity** | community IDE ecosystem | unstable extension story | **COULD docs** |
+| **Gemini CLI** | ~106k★; extensions hub | Extensions + skills | **docs** (no eko extension publish) |
+| **Antigravity** | Google CLI transition messaging (w/ Gemini) | skills best-effort; not separate mall | **docs** (linked to Gemini) |
 | **VS Code** | MS Marketplace + Open VSX | Editor extensions | **N/A** for eko-as-VSIX-index |
-| **GH Copilot** | Plugins/Skills/MCP/Hooks docs | Copilot formats | **COULD docs** |
-| **AWS Kiro** | Open VSX + Skills/MCP/ACP | IDE + Open VSX | **COULD docs** |
+| **GH Copilot** | Official Skills + custom agents + hooks + MCP | skills.sh bridge | **docs** |
+| **AWS Kiro** | Open VSX + Skills/MCP/ACP | IDE + Open VSX | **docs** |
+| **Kiro Crew** | in-product multi-agent | not 3p registry | **docs** (sub of Kiro) |
 | **Warp** | ~64k★ ADE | thin 3p pack mall | **COULD docs** |
 | **Grok** | model/API | provider | **N/A** |
 | **Meta Muse Code** | community dumps | no stable 3p registry | **N/A** |

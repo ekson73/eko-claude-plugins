@@ -1,7 +1,7 @@
 {
   "$schema": "./catalog.schema.json",
   "catalog": "eko-plugin-marketplace",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Eko multi-host plugin marketplace / distribution index (pointers only). Target repo name eko-plugin-marketplace. No agentic-tool payloads.",
   "formerly": "eko-claude-plugins",
   "domain": "distribution",
@@ -16,7 +16,9 @@
           "kind": "claude-marketplace-plugin",
           "install": "/plugin install maos@eko-claude-plugins",
           "marketplace": "ekson73/eko-claude-plugins",
-          "skills_install": "npx skills add ekson73/multi-agent-os -g -a claude-code  # optional alt to marketplace plugin"
+          "skills_install": "npx skills add ekson73/multi-agent-os -g -a claude-code  # optional alt to marketplace plugin",
+          "research_as_of": "2026-08-10",
+          "runtime_signal": "claude-code npm ~2.1.226 (2026-08)"
         },
         "pi": {
           "status": "ready",
@@ -24,7 +26,8 @@
           "install": "pi install git:github.com/ekson73/multi-agent-os@main",
           "note": "Root package.json pi.skills \u2014 multi-agent-os#313 closed via #315",
           "upstream_issue": "ekson73/multi-agent-os#313",
-          "skills_install": "npx skills add ekson73/multi-agent-os -g -a '*'  # optional; pi package is primary"
+          "skills_install": "npx skills add ekson73/multi-agent-os -g -a '*'  # optional; pi package is primary",
+          "research_as_of": "2026-08-10"
         },
         "opencode": {
           "status": "ready",
@@ -32,66 +35,98 @@
           "install": "curl -fsSL -o ~/.config/opencode/plugins/maos.js https://raw.githubusercontent.com/ekson73/multi-agent-os/main/packaging/opencode-maos/index.js",
           "note": "Thin plugin packaging/opencode-maos \u2014 multi-agent-os#314 closed via #315; skills via npx skills add",
           "upstream_issue": "ekson73/multi-agent-os#314",
-          "skills_install": "npx skills add ekson73/multi-agent-os -g -a opencode"
+          "skills_install": "npx skills add ekson73/multi-agent-os -g -a opencode",
+          "research_as_of": "2026-08-10",
+          "runtime_signal": "opencode-ai npm ~1.18.x; gh ~196k\u2605"
         },
         "codex": {
           "status": "docs",
           "kind": "skills-cli-pointer",
           "install": "npx skills add ekson73/multi-agent-os -g -a codex",
-          "note": "Skills live in multi-agent-os; eko only documents discovery",
+          "note": "Skills + MCP. Portable: npx skills. No Claude-like 3p marketplace for eko to host.",
           "host_readme": "hosts/openai/README.md",
-          "compat_note": "Agent Skills open standard; content in MAOS"
+          "compat_note": "Agent Skills open standard; content in MAOS",
+          "research_as_of": "2026-08-10"
         },
         "chatgpt": {
           "status": "n/a",
-          "reason": "OpenAI store not controlled by eko"
+          "reason": "OpenAI store not controlled by eko",
+          "research_as_of": "2026-08-10"
         },
         "gemini": {
           "status": "docs",
           "kind": "skills-cli-pointer",
           "install": "npx skills add ekson73/multi-agent-os -g -a gemini-cli",
           "host_readme": "hosts/google/README.md",
-          "compat_note": "Gemini CLI extensions exist separately; skills path is portable discovery"
+          "compat_note": "Gemini CLI extensions exist separately; skills path is portable discovery",
+          "note": "Gemini CLI also has Extensions (geminicli.com/extensions). eko does not publish extensions. 2026: free/One tier messaging transitions Gemini CLI \u2192 Antigravity CLI \u2014 see hosts/google.",
+          "research_as_of": "2026-08-10",
+          "native_surface": "extensions+skills"
         },
         "antigravity": {
           "status": "docs",
           "kind": "skills-cli-pointer",
           "install": "npx skills add ekson73/multi-agent-os -g -a '*'",
           "host_readme": "hosts/google/README.md",
-          "compat_note": "No stable registry; skills CLI best-effort if agent id detected"
+          "compat_note": "No stable registry; skills CLI best-effort if agent id detected",
+          "note": "Treat as Google agentic CLI successor/sibling to Gemini CLI (2026 transition messaging). No separate eko marketplace. Skills best-effort until stable agent id.",
+          "related": [
+            "gemini"
+          ],
+          "research_as_of": "2026-08-10"
         },
         "vscode": {
           "status": "n/a",
-          "reason": "No VSIX distribution-index product in eko"
+          "reason": "No VSIX distribution-index product in eko",
+          "research_as_of": "2026-08-10"
         },
         "gh-copilot": {
           "status": "docs",
           "kind": "skills-cli-pointer",
           "install": "npx skills add ekson73/multi-agent-os -g -a github-copilot",
           "host_readme": "hosts/microsoft/README.md",
-          "compat_note": "Copilot also has native plugins/skills/MCP \u2014 skills.sh is the eko discovery bridge"
+          "compat_note": "Copilot also has native plugins/skills/MCP \u2014 skills.sh is the eko discovery bridge",
+          "note": "Official Agent Skills + custom agents + hooks + MCP (GitHub docs). eko indexes MAOS via skills.sh only \u2014 not a Copilot app-store clone.",
+          "research_as_of": "2026-08-10",
+          "docs": [
+            "https://docs.github.com/en/copilot/concepts/agents/about-agent-skills"
+          ]
         },
         "aws-kiro": {
           "status": "docs",
           "kind": "skills-cli-pointer",
           "install": "npx skills add ekson73/multi-agent-os -g -a kiro",
           "host_readme": "hosts/aws-kiro/README.md",
-          "compat_note": "Kiro: AGENTS.md + Skills + MCP + Open VSX; eko does not publish Open VSX"
+          "compat_note": "Kiro: AGENTS.md + Skills + MCP + Open VSX; eko does not publish Open VSX",
+          "note": "Kiro: Skills + MCP + ACP + AGENTS.md + Open VSX. eko \u2260 Open VSX publisher. Crew = in-product multi-agent (see aws-kiro-crew).",
+          "research_as_of": "2026-08-10"
         },
         "grok": {
           "status": "n/a",
-          "reason": "Model provider, not pack host"
+          "reason": "Model provider, not pack host",
+          "research_as_of": "2026-08-10"
         },
         "meta-muse-code": {
           "status": "n/a",
-          "reason": "No stable third-party pack registry"
+          "reason": "No stable third-party pack registry",
+          "research_as_of": "2026-08-10"
         },
         "warp": {
           "status": "docs",
           "kind": "skills-cli-pointer",
           "install": "npx skills add ekson73/multi-agent-os -g -a '*'",
           "host_readme": "hosts/warp/README.md",
-          "compat_note": "Thin 3p pack surface; skills install if Warp agent id supported by skills CLI"
+          "compat_note": "Thin 3p pack surface; skills install if Warp agent id supported by skills CLI",
+          "research_as_of": "2026-08-10"
+        },
+        "aws-kiro-crew": {
+          "status": "docs",
+          "kind": "feature-surface-pointer",
+          "parent": "aws-kiro",
+          "install": "npx skills add ekson73/multi-agent-os -g -a kiro",
+          "note": "Kiro Crew is multi-agent orchestration inside Kiro \u2014 not a third-party marketplace. Discover MAOS skills the same way as Kiro; configure crews in-product.",
+          "host_readme": "hosts/aws-kiro/README.md",
+          "research_as_of": "2026-08-10"
         }
       }
     }
@@ -111,6 +146,10 @@
     "portable_skills_cli": "npx skills add ekson73/multi-agent-os",
     "product_ssot": "https://github.com/ekson73/multi-agent-os",
     "distribution_ssot": "https://github.com/ekson73/eko-claude-plugins",
-    "agent_id_note": "Pass -a <id> as supported by current skills CLI; use -a '*' for all detected agents; ids evolve \u2014 verify with skills add --help / list"
+    "agent_id_note": "Pass -a <id> as supported by current skills CLI; use -a '*' for all detected agents; ids evolve \u2014 verify with skills add --help / list",
+    "research": "docs/research/HOST-RESEARCH-2026-08.md",
+    "research_as_of": "2026-08-10",
+    "spine": "Agent Skills open standard (agentskills.io) + npx skills \u2192 multi-agent-os",
+    "last30days": "v3.18.4 qualitative (HN); decisions weighted to primary docs/version probes"
   }
 }

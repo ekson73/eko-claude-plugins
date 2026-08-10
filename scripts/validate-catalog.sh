@@ -23,7 +23,7 @@ key_to_host = {
     "codex": "openai", "chatgpt": "openai",
     "gemini": "google", "antigravity": "google",
     "vscode": "microsoft", "gh-copilot": "microsoft",
-    "aws-kiro": "aws-kiro", "warp": "warp",
+    "aws-kiro": "aws-kiro", "aws-kiro-crew": "aws-kiro", "warp": "warp",
     "grok": "_out-of-scope", "meta-muse-code": "_out-of-scope",
 }
 missing = []
@@ -43,5 +43,6 @@ hold = (root / "docs/P3-RENAME-HOLD.md").read_text()
 assert "RENAME_HOLD=active" in hold
 assert (root / "docs/plans/P3-rename-cutover-plan.md").is_file()
 assert (root / "docs/MULTI-HARNESS-COMPAT.md").is_file()
+assert (root / "docs/research/HOST-RESEARCH-2026-08.md").is_file()
 print("OK validate-catalog", mp["version"], cat.get("version"), "HOLD+PLAN+COMPAT present")
 PY
