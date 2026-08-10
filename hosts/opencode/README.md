@@ -18,3 +18,6 @@ MAOS (or another upstream) must publish an OpenCode-shaped plugin. eko flips to 
 
 ## Evidence (≈2026-08)
 anomalyco/opencode ~196k★, pushed 2026-08-10; HN “Yet Another OpenCode Plugin”; npm `opencode` ~1.18.x.
+
+## Tracking
+- https://github.com/ekson73/multi-agent-os/issues/314

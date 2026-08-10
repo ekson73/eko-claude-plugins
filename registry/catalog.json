@@ -21,12 +21,14 @@
           "status": "pending-upstream",
           "kind": "pi-package-pointer",
           "install": "pi install git:github.com/ekson73/multi-agent-os@main",
-          "note": "Requires multi-agent-os pi-package manifest before status=ready"
+          "note": "Requires multi-agent-os pi-package manifest \u2014 tracking https://github.com/ekson73/multi-agent-os/issues/313",
+          "upstream_issue": "ekson73/multi-agent-os#313"
         },
         "opencode": {
           "status": "pending-upstream",
           "kind": "opencode-plugin-pointer",
-          "note": "Requires multi-agent-os OpenCode plugin package before status=ready"
+          "note": "Requires multi-agent-os OpenCode plugin package \u2014 tracking https://github.com/ekson73/multi-agent-os/issues/314",
+          "upstream_issue": "ekson73/multi-agent-os#314"
         },
         "codex": {
           "status": "docs",

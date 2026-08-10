@@ -20,3 +20,6 @@ pi install git:github.com/ekson73/multi-agent-os@main
 
 ## Evidence (≈2026-08)
 `@earendil-works/pi-coding-agent` **0.84.1**; catalog is npm-backed packages (extensions/skills/prompts/themes).
+
+## Tracking
+- https://github.com/ekson73/multi-agent-os/issues/313
