@@ -1,7 +1,7 @@
 {
   "$schema": "./catalog.schema.json",
   "catalog": "eko-plugin-marketplace",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Eko multi-host plugin marketplace / distribution index (pointers only). Target repo name eko-plugin-marketplace. No agentic-tool payloads.",
   "formerly": "eko-claude-plugins",
   "domain": "distribution",
@@ -150,6 +150,15 @@
     "research": "docs/research/HOST-RESEARCH-2026-08.md",
     "research_as_of": "2026-08-10",
     "spine": "Agent Skills open standard (agentskills.io) + npx skills \u2192 multi-agent-os",
-    "last30days": "v3.18.4 qualitative (HN); decisions weighted to primary docs/version probes"
+    "last30days": "v3.18.4 qualitative (HN); decisions weighted to primary docs/version probes",
+    "maos_version_floor": "1.22.1",
+    "skills_cli": "1.5.22",
+    "dogfood": {
+      "date": "2026-08-10",
+      "command": "npx skills add ekson73/multi-agent-os -l",
+      "skills_found": 81,
+      "skipped_fixed": "multi-agent-os#skills-frontmatter 1.22.1"
+    },
+    "note": "Dogfood fixed MAOS nested SKILL.md frontmatter; portable path healthier for all docs-tier hosts."
   }
 }

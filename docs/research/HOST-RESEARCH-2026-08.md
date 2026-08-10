@@ -125,3 +125,32 @@ multi-agent-os (maos)
 - [`../HOST-MATRIX-2026-08.md`](../HOST-MATRIX-2026-08.md)
 - [`../domain-boundary-eko-vs-maos.md`](../domain-boundary-eko-vs-maos.md)
 - [`../plans/P3-rename-cutover-plan.md`](../plans/P3-rename-cutover-plan.md)
+
+## 7. Dogfood PDCA — skills.sh × MAOS (2026-08-10, round n+1)
+
+| Phase | Evidence |
+|---|---|
+| **Plan** | Portable spine = `npx skills add ekson73/multi-agent-os` for non-Claude hosts |
+| **Do** | `npx skills add ekson73/multi-agent-os -l` on operator machine |
+| **Check** | Found **81** skills; **2 skipped**: `.agents/skills/multi-agent-os/SKILL.md` + `.claude/skills/multi-agent-os/SKILL.md` missing `name`/`description` frontmatter |
+| **Act** | MAOS **1.22.1** — frontmatter fix + `validate:skills` gate (multi-agent-os PR) |
+
+### last30days (same window, qualitative)
+What I learned: ecosystem chatter still centers on **skills as the extension unit** and on **marketplace/manifest hygiene** in community plugin PRs (Claude-adjacent registries). That supports investing in **Agent Skills compliance on MAOS**, not new eko malls per vendor.
+
+### Version re-probe (unchanged same day)
+| Package | Version |
+|---|---|
+| `@anthropic-ai/claude-code` | 2.1.226 |
+| `opencode-ai` | 1.18.16 |
+| `skills` | 1.5.22 |
+
+### Council confirmation (no flip)
+| Decision | Still valid? |
+|---|---|
+| eko Claude-only full marketplace | **Yes** |
+| Pi/OpenCode ready via MAOS packaging | **Yes** |
+| skills.sh spine for Codex/Copilot/Kiro/Gemini/Warp | **Yes** — strengthened by frontmatter fix |
+| n/a ChatGPT/VSIX/Grok/Muse | **Yes** |
+| RENAME_HOLD | **Yes** |
+

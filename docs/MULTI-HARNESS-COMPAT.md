@@ -25,7 +25,7 @@
 └─────────────────────────────────────────────────────────┘
 ```
 
-**Portable bridge across many AI coding harnesses:** [Agent Skills](https://agentskills.io) via `npx skills` (skills.sh).  
+**Portable bridge across many AI coding harnesses:** [Agent Skills](https://agentskills.io) via `npx skills` (skills.sh). MAOS **≥1.22.1** recommended (skill frontmatter gate for skills.sh).  
 **Native deep integrations** (Claude marketplace, Pi package, OpenCode plugin) when the host has a first-class pack system.
 
 ## Install matrix (honest)

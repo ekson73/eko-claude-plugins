@@ -27,3 +27,13 @@ Claude-only marketplace name/epistemology is too narrow. Multiple harnesses need
 ## Consequences
 + Clear domain vs MAOS; multi-host discoverability without god-repo.
 − Pi/OpenCode `ready` blocked on MAOS packaging work (tracked as upstream issues, not implemented here).
+
+## Addendum 2026-08-10 (status, non-breaking)
+
+| Host | ADR-003 original | Actual (post MAOS #315 + research) |
+|---|---|---|
+| Pi | pending-upstream | **ready** (MAOS `package.json` pi.skills) |
+| OpenCode | pending-upstream | **ready** (MAOS `packaging/opencode-maos`) |
+| Codex | docs | **docs** (skills.sh) |
+
+Council artifact: `docs/research/HOST-RESEARCH-2026-08.md`. Rename still ADR-004 + RENAME_HOLD.
