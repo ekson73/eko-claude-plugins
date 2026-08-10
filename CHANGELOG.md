@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.9] — 2026-08-10
+
+### Fixed
+- Ship `scripts/p3-rename-inventory.sh` + `scripts/validate-catalog.sh` (missed in #21 tree)
+
+
 ## [1.6.8] — 2026-08-10
 
 ### Added
