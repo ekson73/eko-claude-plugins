@@ -2,20 +2,29 @@
 
 ## Done
 - [x] Domain split eko ⊥ MAOS
-- [x] ADR-001 float · ADR-002 GitHub Flow · ADR-003 multi-host hub · ADR-004 rename target
+- [x] ADR-001–004 + naming **DECIDED** `eko-plugin-marketplace`
 - [x] `registry/catalog.json` + schema + CI path-deny
-- [x] Naming **DECIDED**: `eko-plugin-marketplace` (operator A)
-- [x] hosts/claude install docs
+- [x] hosts/claude
+- [x] Host matrix research ≈2026-08 (`docs/HOST-MATRIX-2026-08.md`)
+- [x] hosts stubs: pi, opencode, openai, google, microsoft, aws-kiro, warp, _out-of-scope
 
-## Next (VKS-2620)
-| Phase | Tasks | Status |
-|---|---|---|
-| **P2** | `hosts/{pi,opencode,openai,google,microsoft,aws-kiro,warp}/README.md` stubs aligned to catalog statuses | ⬜ |
-| **P2** | Issues on `multi-agent-os`: pi-package + OpenCode plugin scaffolds; link keys in catalog | ⬜ |
-| **P3** | GitHub rename `eko-claude-plugins` → `eko-plugin-marketplace` + consumer BC (MAOS README, vek marketplace refs, plugins-provenance) | ⬜ |
-| **P3** | Update Claude install paths post-rename; keep alias notes 1 cycle | ⬜ |
+## In progress / next (VKS-2620)
+| Phase | Tasks | Owner repo | Status |
+|---|---|---|---|
+| **P2b** | Open MAOS issues: pi-package manifest; OpenCode plugin package; link issue URLs in catalog notes | multi-agent-os + eko catalog note | ⬜ |
+| **P2c** | Optional: generate `hosts/index` table from catalog.json in CI | eko | ⬜ |
+| **P3** | GitHub rename → `eko-plugin-marketplace` + BC (MAOS README, vek-claude-plugins refs, plugins-provenance, install snippets) | eko + consumers | ⬜ |
+| **P3b** | Post-rename: dual-name note 1 cycle; then drop BC paths | eko | ⬜ |
+
+## Priority effort (refined Aug 2026)
+1. **Claude** — maintain (only full `ready` pack mall eko owns)
+2. **Pi + OpenCode** — highest leverage *after* MAOS scaffolds (real package/plugin systems)
+3. **Codex** — docs via skills.sh pointer (no fake plugin marketplace)
+4. **Copilot / Kiro / Warp / Gemini / Antigravity** — docs-only until ROI clear
+5. **Never invest as marketplace:** Grok, Muse, ChatGPT store, VS Code VSIX-as-eko-product
 
 ## Never
 - Agentic-tools inside this repo
 - Merge with multi-agent-os
-- Fake ready for Pi/OpenCode without upstream
+- `ready` without working install
+- Reopen naming (DECIDED A) without explicit operator override
