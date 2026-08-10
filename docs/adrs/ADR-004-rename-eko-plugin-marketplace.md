@@ -31,3 +31,17 @@ Operator: feels disconnected unless explained. “pack-index” is insider jargo
 
 ## Non-goals
 Does not move agentic-tools into this repo. Does not merge with multi-agent-os.
+
+## Council R3 (same day) — expanded matrix
+
+Operator asked to include `eko-plugins-marketplace` and `eko-{agent,agents,agentic}-{plugins,marketplace,registry,…}`.
+
+| Result | Name |
+|---|---|
+| **Confirmed winner** | `eko-plugin-marketplace` |
+| Operator form (not default) | `eko-plugins-marketplace` — marked EN plural attributive; HITL override only |
+| Hard reject | `eko-agent(s)-*` — ontology bleed (marketplace *of agents*) |
+| Soft reject | bare `eko-agentic-marketplace` — jargon, drops plugin continuity |
+| Long OK-but-heavy | `eko-agentic-plugin-marketplace` |
+
+Full table: akasha `docs/decisions/ADR-eko-plugin-marketplace-naming-council-r3-2026-08-10.md`.
