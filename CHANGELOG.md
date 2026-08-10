@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.6.7] — 2026-08-10
+
+### Added
+- `docs/P3-RENAME-HOLD.md` — **RENAME_HOLD=active**; deep-research DoR before GitHub rename
+- CI enforces HOLD file + catalog↔hosts alignment
+
+### Changed
+- NAMING/ROADMAP/README: P3 frozen pending plan+GO (sessions + multi-harness consumers)
+
+
 ## [1.6.5] — 2026-08-10
 
 ### Changed

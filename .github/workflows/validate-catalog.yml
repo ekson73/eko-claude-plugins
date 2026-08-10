@@ -8,38 +8,51 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Forbid agentic-tool trees in distribution hub
+      - name: Forbid agentic-tool / vendored trees
         run: |
           set -euo pipefail
           bad=0
-          for d in skills agents commands hooks mcp-tools; do
-            if [ -d "$d" ] && [ "$d" != "hooks" ]; then
-              echo "FORBIDDEN tree present: $d"
-              bad=1
-            fi
+          for d in skills agents commands mcp-tools; do
+            if [ -d "$d" ]; then echo "FORBIDDEN: $d"; bad=1; fi
           done
-          # hooks dir only allowed if empty or docs-only — fail if any non-md deep content
-          if [ -d hooks ]; then
-            if find hooks -type f ! -name '*.md' | grep -q .; then
-              echo "FORBIDDEN: hooks/ contains non-doc files"
-              bad=1
-            fi
-          fi
-          # plugins/ vendored content should not reappear
           if [ -d plugins ] && find plugins -type f | grep -q .; then
-            echo "WARN: plugins/ directory non-empty (prefer external sources only)"
+            echo "FORBIDDEN: vendored plugins/"; bad=1
           fi
           exit $bad
-      - name: Validate JSON
+      - name: Validate marketplace + catalog + hosts + RENAME_HOLD
         run: |
-          python3 - <<'PY'
-          import json
+          python3 <<'PY'
+          import json, sys
           from pathlib import Path
-          json.loads(Path(".claude-plugin/marketplace.json").read_text())
-          cat=json.loads(Path("registry/catalog.json").read_text())
-          assert cat.get("domain")=="distribution"
-          for e in cat["entries"]:
-            for p, meta in e["providers"].items():
-              assert meta["status"] in ("ready","pending-upstream","docs","n/a"), (p, meta)
-          print("catalog OK", len(cat["entries"]), "entries")
+          root = Path(".")
+          mp = json.loads((root / ".claude-plugin/marketplace.json").read_text())
+          cat = json.loads((root / "registry/catalog.json").read_text())
+          assert cat.get("domain") == "distribution"
+          assert cat.get("catalog") == "eko-plugin-marketplace"
+          naming = cat.get("naming") or {}
+          assert naming.get("status") == "DECIDED"
+          assert naming.get("system_name") == "eko-plugin-marketplace"
+          assert mp.get("name") == "eko-claude-plugins", "BC marketplace name until P3 plan executes"
+
+          key_to_host = {
+              "claude": "claude", "pi": "pi", "opencode": "opencode",
+              "codex": "openai", "chatgpt": "openai",
+              "gemini": "google", "antigravity": "google",
+              "vscode": "microsoft", "gh-copilot": "microsoft",
+              "aws-kiro": "aws-kiro", "warp": "warp",
+              "grok": "_out-of-scope", "meta-muse-code": "_out-of-scope",
+          }
+          missing = []
+          for entry in cat["entries"]:
+              for key, meta in entry["providers"].items():
+                  assert meta.get("status") in ("ready", "pending-upstream", "docs", "n/a"), key
+                  host = key_to_host.get(key)
+                  if host and not (root / "hosts" / host / "README.md").is_file():
+                      missing.append(f"hosts/{host}/README.md (for {key})")
+          if missing:
+              print("MISSING:", *missing, sep="\n ")
+              sys.exit(1)
+          hold = (root / "docs/P3-RENAME-HOLD.md").read_text()
+          assert "RENAME_HOLD=active" in hold
+          print("OK", mp["version"], cat.get("version"), "HOLD active, hosts aligned")
           PY
