@@ -1,17 +1,17 @@
 {
   "name": "eko-claude-plugins",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "owner": {
     "name": "Emilson Moraes",
     "email": "emilson.moraes@gmail.com",
     "url": "https://github.com/ekson73"
   },
   "metadata": {
-    "description": "Personal Claude Code plugin marketplace - AI agent tools and workflows",
+    "description": "Eko multi-host pack distribution hub (Claude marketplace + multi-provider registry pointers). Formerly Claude-only marketplace; product content lives upstream (e.g. multi-agent-os). Target name: eko-pack-index.",
     "repository": "https://github.com/ekson73/eko-claude-plugins",
     "license": "MIT",
     "homepage": "https://github.com/ekson73/eko-claude-plugins",
-    "lastUpdated": "2026-07-01"
+    "lastUpdated": "2026-08-10"
   },
   "plugins": [
     {

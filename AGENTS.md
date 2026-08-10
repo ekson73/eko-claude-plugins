@@ -4,6 +4,17 @@
 
 This repo is a **Claude Code plugin marketplace** — **Class B** (consumed by users, **not** deployed to environments).
 
+## Domain (ADR-003) — DISTRIBUTION ONLY
+
+This repo is a **pack index / marketplace hub**, not a product monorepo.
+
+**MUST NOT add:** `skills/`, `agents/`, `commands/` (product), `hooks/` logic trees, `mcp-tools/`, vendored plugin source.
+
+**MAY add:** `registry/`, `hosts/*/`, marketplace manifests, install docs, ADRs about distribution.
+
+Product work → `ekson73/multi-agent-os` (and other upstreams listed in `registry/catalog.json`).
+
+
 ## Branching & Release Model — GitHub Flow (Class B: library/marketplace)
 
 > Model = **GitHub Flow + SemVer**. See [`docs/adrs/ADR-002-github-flow-branching.md`](./docs/adrs/ADR-002-github-flow-branching.md).

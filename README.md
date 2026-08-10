@@ -1,34 +1,34 @@
-# Eko Claude Plugins
+# Eko Pack Index _(repo: `eko-claude-plugins`)_
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin%20Marketplace-blueviolet)](https://claude.ai/code)
-[![Plugins](https://img.shields.io/badge/Plugins-1-green)](https://github.com/ekson73/eko-claude-plugins)
+[![Hub](https://img.shields.io/badge/role-distribution%20hub-green)](./docs/domain-boundary-eko-vs-maos.md)
 [![Branching: GitHub Flow](https://img.shields.io/badge/branching-GitHub%20Flow%20(Class%20B)-0a7bbb)](./AGENTS.md)
 
-Personal Claude Code plugin **marketplace** by [Emilson Moraes](https://github.com/ekson73) — a curated catalog of AI-agent tooling, referenced via the official Anthropic [`github` source type](https://code.claude.com/docs/en/plugin-marketplaces#plugin-sources). Entries **float on the upstream `main` branch** (`"ref": "main"`, no SHA pin) per [ADR-001](./docs/adrs/ADR-001-float-marketplace-sources.md). This repo is the **index** that tells Claude Code where to fetch each plugin from — it is **not a plugin itself**.
+> **Role:** multi-host **distribution / discovery hub** (marketplace + registry of pack pointers).  
+> **Not a plugin. Not agentic-tools.** Product packs (e.g. `maos`) live in upstream repos such as [`multi-agent-os`](https://github.com/ekson73/multi-agent-os).  
+> **Anima name (target rename):** [`eko-pack-index`](./docs/adrs/ADR-004-rename-eko-pack-index.md) · **ADR-003:** multi-host hub.
 
----
+Personal hub by [Emilson Moraes](https://github.com/ekson73) — Claude marketplace entries float on upstream `main` per [ADR-001](./docs/adrs/ADR-001-float-marketplace-sources.md). Machine index: [`registry/catalog.json`](./registry/catalog.json).
 
-## Overview
+### Domain boundary (do not blur)
 
-```
-eko-claude-plugins/                # Marketplace root (this repo, MIT)
-├── .claude-plugin/
-│   └── marketplace.json           # Plugin catalog — source of truth
-├── AGENTS.md                      # Vendor-neutral AI-agent SSOT (AAIF)
-├── CLAUDE.md / GEMINI.md          # Thin vendor pointers → AGENTS.md
-├── docs/adrs/                     # ADR-001 (float) · ADR-002 (GitHub Flow)
-├── CHANGELOG.md · LICENSE · README.md
-```
+| This repo (eko) | multi-agent-os |
+|---|---|
+| marketplace / registry / install pointers | skills, agents, hooks, commands, mcp-tools, product bins |
+| discover & install | implement & version product |
 
-**No `plugins/` directory, zero submodules** — plugins are fetched fresh by Claude Code from their upstream repos, tracking `ref: main` (float).
+See [domain-boundary-eko-vs-maos.md](./docs/domain-boundary-eko-vs-maos.md).
 
----
+### Multi-host status (honest)
 
-## Prerequisites
-
-- **[Claude Code](https://claude.ai/code)** installed and authenticated ([install guide](https://code.claude.com/docs/en/quickstart)).
-- All plugins listed here are **public** (MIT/OSS) — no special access required.
+| Host | Status in catalog |
+|---|---|
+| Claude Code | **ready** |
+| Pi / OpenCode | **pending-upstream** (need package scaffolds on MAOS) |
+| Codex | **docs** (`npx skills add` → MAOS) |
+| GH Copilot / Kiro / Warp / Gemini / Antigravity | **docs** |
+| ChatGPT store / Grok / Muse / VS Code VSIX index | **n/a** |
 
 ---
 

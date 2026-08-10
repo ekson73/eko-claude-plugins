@@ -1,0 +1,49 @@
+{
+  "$schema": "./catalog.schema.json",
+  "catalog": "eko-pack-index",
+  "version": "0.1.0",
+  "description": "Multi-host distribution index of pack pointers only. No agentic-tool payloads.",
+  "formerly": "eko-claude-plugins",
+  "domain": "distribution",
+  "entries": [
+    {
+      "id": "maos",
+      "upstream": "https://github.com/ekson73/multi-agent-os",
+      "license": "MIT",
+      "providers": {
+        "claude": {
+          "status": "ready",
+          "kind": "claude-marketplace-plugin",
+          "install": "/plugin install maos@eko-claude-plugins",
+          "marketplace": "ekson73/eko-claude-plugins"
+        },
+        "pi": {
+          "status": "pending-upstream",
+          "kind": "pi-package-pointer",
+          "install": "pi install git:github.com/ekson73/multi-agent-os@main",
+          "note": "Requires multi-agent-os pi-package manifest before status=ready"
+        },
+        "opencode": {
+          "status": "pending-upstream",
+          "kind": "opencode-plugin-pointer",
+          "note": "Requires multi-agent-os OpenCode plugin package before status=ready"
+        },
+        "codex": {
+          "status": "docs",
+          "kind": "skills-cli-pointer",
+          "install": "npx skills add ekson73/multi-agent-os -g -a codex",
+          "note": "Skills live in multi-agent-os; eko only documents discovery"
+        },
+        "chatgpt": { "status": "n/a", "reason": "OpenAI store not controlled by eko" },
+        "gemini": { "status": "docs", "kind": "docs-pointer" },
+        "antigravity": { "status": "docs", "kind": "docs-pointer" },
+        "vscode": { "status": "n/a", "reason": "No VSIX distribution-index product in eko" },
+        "gh-copilot": { "status": "docs", "kind": "docs-pointer" },
+        "aws-kiro": { "status": "docs", "kind": "docs-pointer" },
+        "grok": { "status": "n/a", "reason": "Model provider, not pack host" },
+        "meta-muse-code": { "status": "n/a", "reason": "No stable third-party pack registry" },
+        "warp": { "status": "docs", "kind": "docs-pointer" }
+      }
+    }
+  ]
+}

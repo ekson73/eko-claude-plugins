@@ -1,0 +1,45 @@
+name: validate-catalog
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Forbid agentic-tool trees in distribution hub
+        run: |
+          set -euo pipefail
+          bad=0
+          for d in skills agents commands hooks mcp-tools; do
+            if [ -d "$d" ] && [ "$d" != "hooks" ]; then
+              echo "FORBIDDEN tree present: $d"
+              bad=1
+            fi
+          done
+          # hooks dir only allowed if empty or docs-only — fail if any non-md deep content
+          if [ -d hooks ]; then
+            if find hooks -type f ! -name '*.md' | grep -q .; then
+              echo "FORBIDDEN: hooks/ contains non-doc files"
+              bad=1
+            fi
+          fi
+          # plugins/ vendored content should not reappear
+          if [ -d plugins ] && find plugins -type f | grep -q .; then
+            echo "WARN: plugins/ directory non-empty (prefer external sources only)"
+          fi
+          exit $bad
+      - name: Validate JSON
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          json.loads(Path(".claude-plugin/marketplace.json").read_text())
+          cat=json.loads(Path("registry/catalog.json").read_text())
+          assert cat.get("domain")=="distribution"
+          for e in cat["entries"]:
+            for p, meta in e["providers"].items():
+              assert meta["status"] in ("ready","pending-upstream","docs","n/a"), (p, meta)
+          print("catalog OK", len(cat["entries"]), "entries")
+          PY
