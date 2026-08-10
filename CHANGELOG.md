@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.6.3] — 2026-08-10
+
+### Added
+- `docs/HOST-MATRIX-2026-08.md` — research-backed host matrix (Aug 2026)
+- `hosts/{pi,opencode,openai,google,microsoft,aws-kiro,warp,_out-of-scope}/` install/discovery stubs
+- Roadmap refined priorities (Claude maintain · Pi/OpenCode after MAOS · docs-only tier · never tier)
+
+### Changed
+- README multi-host status table expanded with links to host docs
+
+
 ## [1.6.2] — 2026-08-10
 
 ### Changed

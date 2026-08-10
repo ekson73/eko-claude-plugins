@@ -20,15 +20,23 @@ Personal hub by [Emilson Moraes](https://github.com/ekson73) — Claude marketpl
 
 See [domain-boundary-eko-vs-maos.md](./docs/domain-boundary-eko-vs-maos.md).
 
-### Multi-host status (honest)
+### Multi-host status (honest, ≈2026-08)
 
-| Host | Status in catalog |
-|---|---|
-| Claude Code | **ready** |
-| Pi / OpenCode | **pending-upstream** (need package scaffolds on MAOS) |
-| Codex | **docs** (`npx skills add` → MAOS) |
-| GH Copilot / Kiro / Warp / Gemini / Antigravity | **docs** |
-| ChatGPT store / Grok / Muse / VS Code VSIX index | **n/a** |
+| Host | Status | eko artifact |
+|---|---|---|
+| **Claude Code** | **ready** | marketplace.json + [hosts/claude](./hosts/claude/) |
+| **Pi** | **pending-upstream** | [hosts/pi](./hosts/pi/) — needs MAOS pi-package |
+| **OpenCode** | **pending-upstream** | [hosts/opencode](./hosts/opencode/) — needs MAOS OpenCode plugin |
+| **Codex** | **docs** | [hosts/openai](./hosts/openai/) — skills CLI → MAOS |
+| **ChatGPT store** | **n/a** | [hosts/openai](./hosts/openai/) |
+| **Gemini / Antigravity** | **docs** | [hosts/google](./hosts/google/) |
+| **VS Code Marketplace** | **n/a** | [hosts/microsoft](./hosts/microsoft/) |
+| **GH Copilot** | **docs** | [hosts/microsoft](./hosts/microsoft/) |
+| **AWS Kiro** | **docs** | [hosts/aws-kiro](./hosts/aws-kiro/) |
+| **Warp** | **docs** | [hosts/warp](./hosts/warp/) |
+| **Grok / Muse** | **n/a** | [hosts/_out-of-scope](./hosts/_out-of-scope/) |
+
+Full research: [`docs/HOST-MATRIX-2026-08.md`](./docs/HOST-MATRIX-2026-08.md) · Roadmap: [`docs/ROADMAP.md`](./docs/ROADMAP.md)
 
 ---
 
