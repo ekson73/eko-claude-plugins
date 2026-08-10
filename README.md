@@ -25,8 +25,8 @@ See [domain-boundary-eko-vs-maos.md](./docs/domain-boundary-eko-vs-maos.md).
 | Host | Status | eko artifact |
 |---|---|---|
 | **Claude Code** | **ready** | marketplace.json + [hosts/claude](./hosts/claude/) |
-| **Pi** | **pending-upstream** | [hosts/pi](./hosts/pi/) — needs MAOS pi-package |
-| **OpenCode** | **pending-upstream** | [hosts/opencode](./hosts/opencode/) — needs MAOS OpenCode plugin |
+| **Pi** | **ready** | [hosts/pi](./hosts/pi/) — needs MAOS pi-package |
+| **OpenCode** | **ready** | [hosts/opencode](./hosts/opencode/) — needs MAOS OpenCode plugin |
 | **Codex** | **docs** | [hosts/openai](./hosts/openai/) — skills CLI → MAOS |
 | **ChatGPT store** | **n/a** | [hosts/openai](./hosts/openai/) |
 | **Gemini / Antigravity** | **docs** | [hosts/google](./hosts/google/) |

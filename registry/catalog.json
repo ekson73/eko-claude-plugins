@@ -1,7 +1,7 @@
 {
   "$schema": "./catalog.schema.json",
   "catalog": "eko-plugin-marketplace",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Eko multi-host plugin marketplace / distribution index (pointers only). Target repo name eko-plugin-marketplace. No agentic-tool payloads.",
   "formerly": "eko-claude-plugins",
   "domain": "distribution",
@@ -18,16 +18,17 @@
           "marketplace": "ekson73/eko-claude-plugins"
         },
         "pi": {
-          "status": "pending-upstream",
+          "status": "ready",
           "kind": "pi-package-pointer",
           "install": "pi install git:github.com/ekson73/multi-agent-os@main",
-          "note": "Requires multi-agent-os pi-package manifest \u2014 tracking https://github.com/ekson73/multi-agent-os/issues/313",
+          "note": "Root package.json pi.skills \u2014 multi-agent-os#313 closed via #315",
           "upstream_issue": "ekson73/multi-agent-os#313"
         },
         "opencode": {
-          "status": "pending-upstream",
+          "status": "ready",
           "kind": "opencode-plugin-pointer",
-          "note": "Requires multi-agent-os OpenCode plugin package \u2014 tracking https://github.com/ekson73/multi-agent-os/issues/314",
+          "install": "see hosts/opencode (local plugin file or packaging/opencode-maos)",
+          "note": "Thin plugin packaging/opencode-maos \u2014 multi-agent-os#314 closed via #315; skills via npx skills add",
           "upstream_issue": "ekson73/multi-agent-os#314"
         },
         "codex": {
