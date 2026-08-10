@@ -7,6 +7,8 @@
 | **SSOT statuses** | [`../registry/catalog.json`](../registry/catalog.json) |
 | **Host detail** | [`../hosts/`](../hosts/) |
 | **Rename** | [`P3-RENAME-HOLD.md`](./P3-RENAME-HOLD.md) — BC GitHub name `eko-claude-plugins` |
+| **Research (2026-08)** | [`research/HOST-RESEARCH-2026-08.md`](./research/HOST-RESEARCH-2026-08.md) — council expand/defer/never |
+| **Spine** | [Agent Skills](https://agentskills.io) + `npx skills` → MAOS |
 
 ## Mental model
 
@@ -34,10 +36,11 @@
 | **Pi** | `ready` | `pi install git:github.com/ekson73/multi-agent-os@main` | Skills CLI optional |
 | **OpenCode** | `ready` | Thin plugin file → see [hosts/opencode](../hosts/opencode/); **and/or** `npx skills add ekson73/multi-agent-os -g -a opencode` | Plugin ≠ full skill corpus |
 | **Codex** | `docs` | `npx skills add ekson73/multi-agent-os -g -a codex` | No Claude-style marketplace in eko |
-| **Gemini CLI** | `docs` | `npx skills add ekson73/multi-agent-os -g -a gemini-cli` | Gemini also has **extensions** (separate); eko does not host them |
-| **Antigravity** | `docs` | `npx skills add ekson73/multi-agent-os -g -a '*'` | Best-effort; no stable 3p registry |
+| **Gemini CLI** | `docs` | `npx skills add ekson73/multi-agent-os -g -a gemini-cli` | Also **Extensions** (Google-owned); eko docs only. See Antigravity transition |
+| **Antigravity** | `docs` | `npx skills add ekson73/multi-agent-os -g -a '*'` | Sibling/successor CLI to Gemini (2026 transition messaging); not a separate eko mall |
 | **GitHub Copilot** | `docs` | `npx skills add ekson73/multi-agent-os -g -a github-copilot` | Native Copilot plugins/MCP exist; skills = discovery bridge |
-| **AWS Kiro** | `docs` | `npx skills add ekson73/multi-agent-os -g -a kiro` | Also AGENTS.md + Open VSX — eko ≠ Open VSX publisher |
+| **AWS Kiro** | `docs` | `npx skills add ekson73/multi-agent-os -g -a kiro` | Skills+MCP+ACP+Open VSX — eko ≠ Open VSX publisher |
+| **Kiro Crew** | `docs` | same as Kiro skills line | In-product multi-agent; **not** a 3p marketplace |
 | **Warp** | `docs` | `npx skills add ekson73/multi-agent-os -g -a '*'` | Thin 3p pack mall |
 | **ChatGPT store** | `n/a` | — | OpenAI-controlled |
 | **VS Code Marketplace** | `n/a` | — | Editor extensions ≠ agent pack index |

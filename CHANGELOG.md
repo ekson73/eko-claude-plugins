@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.8.0] — 2026-08-10
+
+### Added
+- `docs/research/HOST-RESEARCH-2026-08.md` — version probes + last30days + **council** expand/defer/never (eko ⊥ MAOS)
+- catalog provider `aws-kiro-crew` (docs feature-surface under Kiro)
+- catalog `compat.research` + per-provider `research_as_of`
+
+### Changed
+- catalog **0.4.0** — Gemini/Antigravity transition notes; Copilot/Kiro honesty; hosts google/microsoft/kiro refreshed
+- MULTI-HARNESS + HOST-MATRIX cross-links to research council
+
+
 ## [1.7.0] — 2026-08-10
 
 ### Added

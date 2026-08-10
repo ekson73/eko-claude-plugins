@@ -1,6 +1,6 @@
 # Host install / discovery pointers
 
-Distribution **docs only**. Status SSOT: [`../registry/catalog.json`](../registry/catalog.json) · compat matrix: [`../docs/MULTI-HARNESS-COMPAT.md`](../docs/MULTI-HARNESS-COMPAT.md) · research: [`../docs/HOST-MATRIX-2026-08.md`](../docs/HOST-MATRIX-2026-08.md).
+Distribution **docs only**. Status SSOT: [`../registry/catalog.json`](../registry/catalog.json) · compat: [`../docs/MULTI-HARNESS-COMPAT.md`](../docs/MULTI-HARNESS-COMPAT.md) · matrix: [`../docs/HOST-MATRIX-2026-08.md`](../docs/HOST-MATRIX-2026-08.md) · council: [`../docs/research/HOST-RESEARCH-2026-08.md`](../docs/research/HOST-RESEARCH-2026-08.md).
 
 | Dir | Host | Status |
 |---|---|---|
