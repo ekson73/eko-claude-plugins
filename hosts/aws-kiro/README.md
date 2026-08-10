@@ -3,14 +3,16 @@
 | Field | Value |
 |---|---|
 | **eko status** | `docs` |
-| **Domain** | distribution pointer only — **no** agentic-tools in eko |
-| **Upstream product example** | `maos` → https://github.com/ekson73/multi-agent-os |
-| **Catalog** | `registry/catalog.json` → `providers.aws-kiro` (or mapped key) |
+| **Domain** | distribution pointer only |
+| **Upstream** | https://github.com/ekson73/multi-agent-os |
+| **Compat matrix** | [MULTI-HARNESS-COMPAT.md](../../docs/MULTI-HARNESS-COMPAT.md) |
 
-## Why docs-only
-Kiro is an agentic IDE: **ACP**, **AGENTS.md**, **Skills**, **MCP**, **Open VSX** extensions.
+## Discovery install
+```bash
+npx skills add ekson73/multi-agent-os -g -a kiro
+```
+Kiro surfaces: **ACP**, **AGENTS.md**, **Skills**, **MCP**, **Open VSX**.
 
-eko does not become an Open VSX publisher by default. Catalog line = how to find **upstream** packs (skills/MCP from MAOS, etc.).
+eko does **not** become an Open VSX publisher. Catalog line = find upstream packs (MAOS skills/MCP docs).
 
-## Evidence (≈2026-08)
-kiro.dev: Open VSX + skills/MCP messaging; CLI install path public.
+Fallback: `npx skills add ekson73/multi-agent-os -g -a '*' -y`.

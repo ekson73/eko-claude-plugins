@@ -48,7 +48,8 @@
 | **P2** | Host README stubs (this doc’s folders) | eko only |
 | **P2b** | MAOS issues: pi-package + OpenCode plugin | **multi-agent-os** |
 | **P3** | Rename GitHub → `eko-plugin-marketplace` | consumers BC |
-| **Defer** | Deep Copilot/Kiro/Warp/Gemini automation | low ROI until P2b |
+| **P2c** | Multi-harness compat matrix + skills.sh install lines | eko `MULTI-HARNESS-COMPAT.md` |
+| **Defer** | Deep native Copilot/Kiro/Warp/Gemini automation beyond skills bridge | low ROI |
 | **Never** | Grok/Muse/ChatGPT-store as eko marketplaces; agentic-tools in eko |
 
 ## Domain firewall

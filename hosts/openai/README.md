@@ -2,22 +2,20 @@
 
 | Field | Value |
 |---|---|
-| **eko status** | `docs / n/a` |
-| **Domain** | distribution pointer only — **no** agentic-tools in eko |
-| **Upstream product example** | `maos` → https://github.com/ekson73/multi-agent-os |
-| **Catalog** | `registry/catalog.json` → `providers.openai` (or mapped key) |
+| **Codex eko status** | `docs` |
+| **ChatGPT eko status** | `n/a` |
+| **Domain** | distribution pointer only |
+| **Upstream** | https://github.com/ekson73/multi-agent-os |
+| **Compat matrix** | [MULTI-HARNESS-COMPAT.md](../../docs/MULTI-HARNESS-COMPAT.md) |
 
-## Codex — status `docs`
-Codex is skill/MCP-centric for coding-agent extensibility, **not** a Claude-like plugin marketplace eko can host.
-
-### Discovery pointer (content lives in MAOS)
+## Codex — discovery install
 ```bash
 npx skills add ekson73/multi-agent-os -g -a codex
 ```
-eko only documents this line; skills are agentic-tools **upstream**.
+Skills live **upstream** (MAOS). eko only indexes this path. Codex is skill/MCP-centric — not a Claude marketplace clone.
 
-## ChatGPT — status `n/a`
-ChatGPT Plugin / GPT store is **OpenAI-controlled**. eko cannot publish or mirror that store. Out of scope.
+## ChatGPT — `n/a`
+Plugin/GPT store is OpenAI-controlled. Out of scope for eko.
 
-## Evidence (≈2026-08)
-openai/codex ~105k★; docs: Skills + MCP + (separate) ChatGPT Plugins product surface.
+## Related
+- Universal: `npx skills add ekson73/multi-agent-os -g -a '*' -y`

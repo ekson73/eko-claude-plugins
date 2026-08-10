@@ -7,7 +7,8 @@
 - [x] Pi + OpenCode **ready** (MAOS #315)
 - [x] **RENAME_HOLD=active** (`docs/P3-RENAME-HOLD.md`)
 - [x] CI catalog↔hosts + HOLD enforce
-- [x] **P3-PLAN drafted** (`docs/plans/P3-rename-cutover-plan.md`) + inventory script
+- [x] **P3-PLAN drafted**
+- [x] **Multi-harness compat matrix** (`docs/MULTI-HARNESS-COMPAT.md`) + docs-tier install lines (`docs/plans/P3-rename-cutover-plan.md`) + inventory script
 
 ## Next (VKS-2620)
 | Phase | Tasks | Status |

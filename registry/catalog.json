@@ -1,7 +1,7 @@
 {
   "$schema": "./catalog.schema.json",
   "catalog": "eko-plugin-marketplace",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Eko multi-host plugin marketplace / distribution index (pointers only). Target repo name eko-plugin-marketplace. No agentic-tool payloads.",
   "formerly": "eko-claude-plugins",
   "domain": "distribution",
@@ -15,27 +15,32 @@
           "status": "ready",
           "kind": "claude-marketplace-plugin",
           "install": "/plugin install maos@eko-claude-plugins",
-          "marketplace": "ekson73/eko-claude-plugins"
+          "marketplace": "ekson73/eko-claude-plugins",
+          "skills_install": "npx skills add ekson73/multi-agent-os -g -a claude-code  # optional alt to marketplace plugin"
         },
         "pi": {
           "status": "ready",
           "kind": "pi-package-pointer",
           "install": "pi install git:github.com/ekson73/multi-agent-os@main",
           "note": "Root package.json pi.skills \u2014 multi-agent-os#313 closed via #315",
-          "upstream_issue": "ekson73/multi-agent-os#313"
+          "upstream_issue": "ekson73/multi-agent-os#313",
+          "skills_install": "npx skills add ekson73/multi-agent-os -g -a '*'  # optional; pi package is primary"
         },
         "opencode": {
           "status": "ready",
           "kind": "opencode-plugin-pointer",
-          "install": "see hosts/opencode (local plugin file or packaging/opencode-maos)",
+          "install": "curl -fsSL -o ~/.config/opencode/plugins/maos.js https://raw.githubusercontent.com/ekson73/multi-agent-os/main/packaging/opencode-maos/index.js",
           "note": "Thin plugin packaging/opencode-maos \u2014 multi-agent-os#314 closed via #315; skills via npx skills add",
-          "upstream_issue": "ekson73/multi-agent-os#314"
+          "upstream_issue": "ekson73/multi-agent-os#314",
+          "skills_install": "npx skills add ekson73/multi-agent-os -g -a opencode"
         },
         "codex": {
           "status": "docs",
           "kind": "skills-cli-pointer",
           "install": "npx skills add ekson73/multi-agent-os -g -a codex",
-          "note": "Skills live in multi-agent-os; eko only documents discovery"
+          "note": "Skills live in multi-agent-os; eko only documents discovery",
+          "host_readme": "hosts/openai/README.md",
+          "compat_note": "Agent Skills open standard; content in MAOS"
         },
         "chatgpt": {
           "status": "n/a",
@@ -43,11 +48,17 @@
         },
         "gemini": {
           "status": "docs",
-          "kind": "docs-pointer"
+          "kind": "skills-cli-pointer",
+          "install": "npx skills add ekson73/multi-agent-os -g -a gemini-cli",
+          "host_readme": "hosts/google/README.md",
+          "compat_note": "Gemini CLI extensions exist separately; skills path is portable discovery"
         },
         "antigravity": {
           "status": "docs",
-          "kind": "docs-pointer"
+          "kind": "skills-cli-pointer",
+          "install": "npx skills add ekson73/multi-agent-os -g -a '*'",
+          "host_readme": "hosts/google/README.md",
+          "compat_note": "No stable registry; skills CLI best-effort if agent id detected"
         },
         "vscode": {
           "status": "n/a",
@@ -55,11 +66,17 @@
         },
         "gh-copilot": {
           "status": "docs",
-          "kind": "docs-pointer"
+          "kind": "skills-cli-pointer",
+          "install": "npx skills add ekson73/multi-agent-os -g -a github-copilot",
+          "host_readme": "hosts/microsoft/README.md",
+          "compat_note": "Copilot also has native plugins/skills/MCP \u2014 skills.sh is the eko discovery bridge"
         },
         "aws-kiro": {
           "status": "docs",
-          "kind": "docs-pointer"
+          "kind": "skills-cli-pointer",
+          "install": "npx skills add ekson73/multi-agent-os -g -a kiro",
+          "host_readme": "hosts/aws-kiro/README.md",
+          "compat_note": "Kiro: AGENTS.md + Skills + MCP + Open VSX; eko does not publish Open VSX"
         },
         "grok": {
           "status": "n/a",
@@ -71,7 +88,10 @@
         },
         "warp": {
           "status": "docs",
-          "kind": "docs-pointer"
+          "kind": "skills-cli-pointer",
+          "install": "npx skills add ekson73/multi-agent-os -g -a '*'",
+          "host_readme": "hosts/warp/README.md",
+          "compat_note": "Thin 3p pack surface; skills install if Warp agent id supported by skills CLI"
         }
       }
     }
@@ -85,5 +105,12 @@
     "decided": "2026-08-10",
     "operator_hitl": "A",
     "status": "DECIDED"
+  },
+  "compat": {
+    "doc": "docs/MULTI-HARNESS-COMPAT.md",
+    "portable_skills_cli": "npx skills add ekson73/multi-agent-os",
+    "product_ssot": "https://github.com/ekson73/multi-agent-os",
+    "distribution_ssot": "https://github.com/ekson73/eko-claude-plugins",
+    "agent_id_note": "Pass -a <id> as supported by current skills CLI; use -a '*' for all detected agents; ids evolve \u2014 verify with skills add --help / list"
   }
 }

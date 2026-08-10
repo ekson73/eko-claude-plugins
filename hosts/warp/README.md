@@ -3,14 +3,14 @@
 | Field | Value |
 |---|---|
 | **eko status** | `docs` |
-| **Domain** | distribution pointer only — **no** agentic-tools in eko |
-| **Upstream product example** | `maos` → https://github.com/ekson73/multi-agent-os |
-| **Catalog** | `registry/catalog.json` → `providers.warp` (or mapped key) |
+| **Domain** | distribution pointer only |
+| **Upstream** | https://github.com/ekson73/multi-agent-os |
+| **Compat matrix** | [MULTI-HARNESS-COMPAT.md](../../docs/MULTI-HARNESS-COMPAT.md) |
 
-## Why docs-only
-Warp is an agentic ADE/terminal product. Packaging surface for third-party “plugin malls” is thin vs Claude/Pi/OpenCode.
+## Discovery install (best-effort)
+```bash
+npx skills add ekson73/multi-agent-os -g -a '*' -y
+```
+Warp’s third-party “plugin mall” surface is thin vs Claude/Pi/OpenCode. eko keeps short discovery notes only — no fabricated Warp marketplace format.
 
-eko action: short discovery notes only; no fabricated Warp marketplace format.
-
-## Evidence (≈2026-08)
-warpdotdev/warp ~64k★, active; docs emphasize product/agents more than third-party plugin registries.
+When skills CLI gains a stable Warp agent id, pin it in `registry/catalog.json` `providers.warp.install` and here.
