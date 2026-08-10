@@ -2,29 +2,30 @@
 
 ## Done
 - [x] Domain split eko ⊥ MAOS
-- [x] ADR-001–004 + naming **DECIDED** `eko-plugin-marketplace`
+- [x] ADR-001–004 + naming **DECIDED** `eko-plugin-marketplace` (operator HITL A)
 - [x] `registry/catalog.json` + schema + CI path-deny
-- [x] hosts/claude
+- [x] hosts/claude + multi-host stubs (pi, opencode, openai, google, microsoft, aws-kiro, warp, _out-of-scope)
 - [x] Host matrix research ≈2026-08 (`docs/HOST-MATRIX-2026-08.md`)
-- [x] hosts stubs: pi, opencode, openai, google, microsoft, aws-kiro, warp, _out-of-scope
+- [x] NAMING.md + domain-boundary lock
 
-## In progress / next (VKS-2620)
-| Phase | Tasks | Owner repo | Status |
+## Next (VKS-2620)
+| Phase | Tasks | Owner | Status |
 |---|---|---|---|
-| **P2b** | Open MAOS issues: pi-package manifest; OpenCode plugin package; link issue URLs in catalog notes | multi-agent-os + eko catalog note | ⬜ |
-| **P2c** | Optional: generate `hosts/index` table from catalog.json in CI | eko | ⬜ |
-| **P3** | GitHub rename → `eko-plugin-marketplace` + BC (MAOS README, vek-claude-plugins refs, plugins-provenance, install snippets) | eko + consumers | ⬜ |
-| **P3b** | Post-rename: dual-name note 1 cycle; then drop BC paths | eko | ⬜ |
+| **P2b** | GitHub issues on `multi-agent-os`: (1) pi-package manifest (2) OpenCode plugin package; paste issue URLs into catalog notes | MAOS + eko catalog note | ⬜ |
+| **P2c** | Optional: CI job render hosts table from catalog.json | eko | ⬜ |
+| **P3** | GitHub rename `eko-claude-plugins` → `eko-plugin-marketplace` + consumer BC (MAOS README, vek-claude-plugins, plugins-provenance, install snippets) | eko + consumers | ⬜ |
+| **P3b** | Post-rename dual-name note 1 cycle; then drop BC paths | eko | ⬜ |
 
-## Priority effort (refined Aug 2026)
-1. **Claude** — maintain (only full `ready` pack mall eko owns)
-2. **Pi + OpenCode** — highest leverage *after* MAOS scaffolds (real package/plugin systems)
-3. **Codex** — docs via skills.sh pointer (no fake plugin marketplace)
-4. **Copilot / Kiro / Warp / Gemini / Antigravity** — docs-only until ROI clear
-5. **Never invest as marketplace:** Grok, Muse, ChatGPT store, VS Code VSIX-as-eko-product
+## Effort priority (Aug 2026, honest)
+1. **Claude** — keep marketplace green (only full `ready` mall eko owns)
+2. **Pi + OpenCode** — after MAOS scaffolds (`pending-upstream` → `ready`)
+3. **Codex** — docs via skills.sh pointer only
+4. **Copilot / Kiro / Warp / Gemini / Antigravity** — docs-only
+5. **Never as eko marketplace:** Grok, Muse, ChatGPT store, VS Code VSIX-as-eko-product
 
 ## Never
 - Agentic-tools inside this repo
+- Vendored `plugins/` copies of upstreams (use marketplace sources)
 - Merge with multi-agent-os
 - `ready` without working install
-- Reopen naming (DECIDED A) without explicit operator override
+- Reopen naming without explicit operator B/C override

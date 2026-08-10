@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.6.4] — 2026-08-10
+
+### Added
+- `hosts/README.md` index table
+
+### Changed
+- ROADMAP: mark multi-host stubs done; clarify P2b/P3 remaining
+- .gitignore: refuse accidental `/plugins/` vendoring
+
+
 ## [1.6.3] — 2026-08-10
 
 ### Added
