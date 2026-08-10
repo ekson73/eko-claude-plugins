@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1] — 2026-08-10
+
+### Changed
+- **Naming:** target rename **`eko-plugin-marketplace`** (Anima council). Interim `eko-pack-index` **rejected** (gloss-independence / opaque-correctness).
+- ADR-004 revised; `registry/catalog.json` catalog id + naming metadata; README identity line.
+
+
 All notable changes to this marketplace will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
