@@ -7,7 +7,7 @@
 
 > **Role:** multi-host **distribution / discovery hub** (marketplace + registry of pack pointers).  
 > **Not a plugin. Not agentic-tools.** Product packs (e.g. `maos`) live in upstream repos such as [`multi-agent-os`](https://github.com/ekson73/multi-agent-os).  
-> **Name DECIDED:** [`eko-plugin-marketplace`](./docs/NAMING.md) (HITL **A**) · GitHub **`eko-claude-plugins`** · **[RENAME_HOLD=active](./docs/P3-RENAME-HOLD.md)** (no rename without deep-research plan) · [Roadmap](./docs/ROADMAP.md).
+> **Name DECIDED:** [`eko-plugin-marketplace`](./docs/NAMING.md) (HITL **A**) · GitHub **`eko-claude-plugins`** · **[RENAME_HOLD=active](./docs/P3-RENAME-HOLD.md)** · cutover plan [DRAFTED](./docs/plans/P3-rename-cutover-plan.md) (execution needs GO) · [Roadmap](./docs/ROADMAP.md).
 
 Personal hub by [Emilson Moraes](https://github.com/ekson73) — Claude marketplace entries float on upstream `main` per [ADR-001](./docs/adrs/ADR-001-float-marketplace-sources.md). Machine index: [`registry/catalog.json`](./registry/catalog.json).
 

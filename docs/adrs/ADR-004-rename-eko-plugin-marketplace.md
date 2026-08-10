@@ -50,3 +50,10 @@ Full table: akasha `docs/decisions/ADR-eko-plugin-marketplace-naming-council-r3-
 - **2026-08-10:** Operator chose **A)** `eko-plugin-marketplace` (Anima default).  
 - Not B (`eko-plugins-marketplace`) · not C (`eko-agentic-plugin-marketplace`).  
 - Naming closed; remaining work is implementation roadmap (P2/P3), not re-litigation.
+
+## Implementation hold (2026-08-10)
+
+- **Status addendum:** Name DECIDED; **GitHub rename execution** under **`RENAME_HOLD=active`**.
+- Spec: [`../P3-RENAME-HOLD.md`](../P3-RENAME-HOLD.md)
+- Cutover plan (two-phase A=GitHub / B=marketplace id): [`../plans/P3-rename-cutover-plan.md`](../plans/P3-rename-cutover-plan.md)
+- Operator must GO before any `gh repo rename` or marketplace id flip.

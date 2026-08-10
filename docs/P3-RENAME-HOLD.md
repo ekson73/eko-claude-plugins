@@ -35,7 +35,9 @@
 
 ## Required before lifting HOLD: deep-research plan (DoR)
 
-Create `docs/plans/P3-rename-cutover-plan.md` covering at least:
+**Plan status:** DRAFTED → [`plans/P3-rename-cutover-plan.md`](./plans/P3-rename-cutover-plan.md). Execution still requires operator GO.
+
+Plan MUST cover at least:
 
 1. Claude local state (`known_marketplaces`, `installed_plugins`, cache dirs)
 2. In-flight sessions/plans/memories strategy (dual-read vs freeze vs migrate)
