@@ -19,3 +19,6 @@ Thumbs.db
 
 # Node modules (if any)
 node_modules/
+
+# local worktrees
+.worktrees/
