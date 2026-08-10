@@ -1,10 +1,12 @@
 # Temporary files
-*.sh
 *.tmp
 *.bak
 *.log
 tmp-*
 temp-*
+
+# Shell scratch at repo root only (tracked scripts live in scripts/)
+/*.sh
 
 # OS files
 .DS_Store

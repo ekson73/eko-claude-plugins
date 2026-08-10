@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.10] — 2026-08-10
+
+### Fixed
+- `.gitignore`: stop ignoring `scripts/*.sh` (was `*.sh` global — blocked #21/#22)
+
+
 ## [1.6.9] — 2026-08-10
 
 ### Fixed
