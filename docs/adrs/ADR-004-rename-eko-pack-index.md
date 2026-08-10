@@ -1,33 +1,6 @@
-# ADR-004: Rename eko-claude-plugins → eko-plugin-marketplace
+# ADR-004 (filename legacy)
 
-- **Status**: Accepted (execution deferred to Phase P3)
-- **Date**: 2026-08-10 (revised same-day — overturned interim `eko-pack-index`)
-- **Name authority**: Anima council re-run after operator gloss-independence critique
+> **Canonical file:** [`ADR-004-rename-eko-plugin-marketplace.md`](./ADR-004-rename-eko-plugin-marketplace.md)
 
-## Name decision
-
-| Rank | Name | Verdict |
-|---|---|---|
-| **Winner** | **`eko-plugin-marketplace`** | Self-explanatory: Eko marketplace of plugins (multi-host catalog) |
-| Runner-up | `eko-plugin-catalog` | Also clear; slightly less “store” |
-| Rejected interim | `eko-pack-index` | Opaque — fails gloss-independence |
-| Legacy | `eko-claude-plugins` | Host-locked (`claude`) |
-
-## Why not eko-pack-index
-Operator: feels disconnected unless explained. “pack-index” is insider jargon (double abstract noun) and drops both high-signal tokens from the legacy name (`plugin`, marketplace role).
-
-## Why eko-plugin-marketplace
-- Elevator: “Eko’s marketplace/catalog of installable plugins for AI coding harnesses.”
-- Keeps **plugin** continuity from `eko-claude-plugins`.
-- Drops only the **claude** host lock.
-- “Marketplace” is the industry word for this distribution role (Claude MP, VS Marketplace, plain English).
-- Pi “package” / OpenCode “plugin” remain provider-specific *kinds* inside `registry/catalog.json`, not a reason to use opaque umbrella jargon.
-
-## BC plan
-1. Land catalog under current GitHub name `eko-claude-plugins`.
-2. README dual-identity: *target name eko-plugin-marketplace; formerly eko-claude-plugins; interim reject eko-pack-index*.
-3. GitHub rename when consumers notified.
-4. Claude `/plugin marketplace add` path updates.
-
-## Non-goals
-Does not move agentic-tools into this repo. Does not merge with multi-agent-os.
+This filename is kept as a **redirect stub** so links to the interim Anima pick `eko-pack-index` still resolve.
+The **accepted target name** is **`eko-plugin-marketplace`** (gloss-independence). Do not reintroduce `eko-pack-index` as the winner.
