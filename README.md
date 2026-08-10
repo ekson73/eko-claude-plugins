@@ -1,4 +1,4 @@
-# Eko Pack Index _(repo: `eko-claude-plugins`)_
+# Eko Plugin Marketplace _(repo: `eko-claude-plugins`)_
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin%20Marketplace-blueviolet)](https://claude.ai/code)
@@ -7,7 +7,7 @@
 
 > **Role:** multi-host **distribution / discovery hub** (marketplace + registry of pack pointers).  
 > **Not a plugin. Not agentic-tools.** Product packs (e.g. `maos`) live in upstream repos such as [`multi-agent-os`](https://github.com/ekson73/multi-agent-os).  
-> **Anima name (target rename):** [`eko-pack-index`](./docs/adrs/ADR-004-rename-eko-pack-index.md) · **ADR-003:** multi-host hub.
+> **Anima name (target rename):** [`eko-plugin-marketplace`](./docs/adrs/ADR-004-rename-eko-plugin-marketplace.md) · **ADR-003:** multi-host hub.
 
 Personal hub by [Emilson Moraes](https://github.com/ekson73) — Claude marketplace entries float on upstream `main` per [ADR-001](./docs/adrs/ADR-001-float-marketplace-sources.md). Machine index: [`registry/catalog.json`](./registry/catalog.json).
 

@@ -1,8 +1,8 @@
 {
   "$schema": "./catalog.schema.json",
-  "catalog": "eko-pack-index",
+  "catalog": "eko-plugin-marketplace",
   "version": "0.1.0",
-  "description": "Multi-host distribution index of pack pointers only. No agentic-tool payloads.",
+  "description": "Eko multi-host plugin marketplace / distribution index (pointers only). Target repo name eko-plugin-marketplace. No agentic-tool payloads.",
   "formerly": "eko-claude-plugins",
   "domain": "distribution",
   "entries": [
@@ -34,16 +34,50 @@
           "install": "npx skills add ekson73/multi-agent-os -g -a codex",
           "note": "Skills live in multi-agent-os; eko only documents discovery"
         },
-        "chatgpt": { "status": "n/a", "reason": "OpenAI store not controlled by eko" },
-        "gemini": { "status": "docs", "kind": "docs-pointer" },
-        "antigravity": { "status": "docs", "kind": "docs-pointer" },
-        "vscode": { "status": "n/a", "reason": "No VSIX distribution-index product in eko" },
-        "gh-copilot": { "status": "docs", "kind": "docs-pointer" },
-        "aws-kiro": { "status": "docs", "kind": "docs-pointer" },
-        "grok": { "status": "n/a", "reason": "Model provider, not pack host" },
-        "meta-muse-code": { "status": "n/a", "reason": "No stable third-party pack registry" },
-        "warp": { "status": "docs", "kind": "docs-pointer" }
+        "chatgpt": {
+          "status": "n/a",
+          "reason": "OpenAI store not controlled by eko"
+        },
+        "gemini": {
+          "status": "docs",
+          "kind": "docs-pointer"
+        },
+        "antigravity": {
+          "status": "docs",
+          "kind": "docs-pointer"
+        },
+        "vscode": {
+          "status": "n/a",
+          "reason": "No VSIX distribution-index product in eko"
+        },
+        "gh-copilot": {
+          "status": "docs",
+          "kind": "docs-pointer"
+        },
+        "aws-kiro": {
+          "status": "docs",
+          "kind": "docs-pointer"
+        },
+        "grok": {
+          "status": "n/a",
+          "reason": "Model provider, not pack host"
+        },
+        "meta-muse-code": {
+          "status": "n/a",
+          "reason": "No stable third-party pack registry"
+        },
+        "warp": {
+          "status": "docs",
+          "kind": "docs-pointer"
+        }
       }
     }
-  ]
+  ],
+  "naming": {
+    "system_name": "eko-plugin-marketplace",
+    "rejected_interim": [
+      "eko-pack-index"
+    ],
+    "runner_up": "eko-plugin-catalog"
+  }
 }
