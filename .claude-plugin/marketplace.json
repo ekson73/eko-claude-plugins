@@ -1,13 +1,13 @@
 {
   "name": "eko-claude-plugins",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "owner": {
     "name": "Emilson Moraes",
     "email": "emilson.moraes@gmail.com",
     "url": "https://github.com/ekson73"
   },
   "metadata": {
-    "description": "Eko multi-host plugin marketplace hub (Claude marketplace + multi-provider registry pointers). Target name: eko-plugin-marketplace. Product content lives upstream (e.g. multi-agent-os).",
+    "description": "Eko Plugin Marketplace hub (DECIDED target repo name: eko-plugin-marketplace). Claude marketplace + multi-host registry pointers. Product content upstream (e.g. multi-agent-os).",
     "repository": "https://github.com/ekson73/eko-claude-plugins",
     "license": "MIT",
     "homepage": "https://github.com/ekson73/eko-claude-plugins",

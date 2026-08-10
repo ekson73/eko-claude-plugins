@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.2] — 2026-08-10
+
+### Changed
+- **DECIDED:** operator accepted Anima default **A** → target name **`eko-plugin-marketplace`** (closed).
+- `docs/NAMING.md` lock · `docs/ROADMAP.md` P2/P3 · domain-boundary title fix · catalog.schema title · ADR-004 stamp.
+
+
 ## [1.6.1] — 2026-08-10
 
 ### Changed
