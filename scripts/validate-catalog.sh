@@ -1,14 +1,21 @@
 #!/usr/bin/env bash
-# Local dogfood of .github/workflows/validate-catalog.yml rules
+# Local + CI dogfood of catalog/marketplace/hosts/HOLD rules
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
+
 for d in skills agents commands mcp-tools; do
   if [ -d "$d" ]; then echo "FORBIDDEN: $d"; exit 1; fi
 done
+if [ -d plugins ] && find plugins -type f | grep -q .; then
+  echo "FORBIDDEN: vendored plugins/"; exit 1
+fi
+
 python3 <<'PY'
 import json
+import sys
 from pathlib import Path
+
 root = Path(".")
 mp = json.loads((root / ".claude-plugin/marketplace.json").read_text())
 cat = json.loads((root / "registry/catalog.json").read_text())
@@ -18,13 +25,22 @@ naming = cat.get("naming") or {}
 assert naming.get("status") == "DECIDED"
 assert naming.get("system_name") == "eko-plugin-marketplace"
 assert mp.get("name") == "eko-claude-plugins", "BC marketplace name until Phase B of cutover plan"
+
 key_to_host = {
-    "claude": "claude", "pi": "pi", "opencode": "opencode",
-    "codex": "openai", "chatgpt": "openai",
-    "gemini": "google", "antigravity": "google",
-    "vscode": "microsoft", "gh-copilot": "microsoft",
-    "aws-kiro": "aws-kiro", "aws-kiro-crew": "aws-kiro", "warp": "warp",
-    "grok": "_out-of-scope", "meta-muse-code": "_out-of-scope",
+    "claude": "claude",
+    "pi": "pi",
+    "opencode": "opencode",
+    "codex": "openai",
+    "chatgpt": "openai",
+    "gemini": "google",
+    "antigravity": "google",
+    "vscode": "microsoft",
+    "gh-copilot": "microsoft",
+    "aws-kiro": "aws-kiro",
+    "aws-kiro-crew": "aws-kiro",
+    "warp": "warp",
+    "grok": "_out-of-scope",
+    "meta-muse-code": "_out-of-scope",
 }
 missing = []
 for entry in cat["entries"]:
@@ -37,8 +53,9 @@ for entry in cat["entries"]:
             assert meta.get("install"), f"docs {key} missing install"
         host = key_to_host.get(key)
         if host and not (root / "hosts" / host / "README.md").is_file():
-            missing.append(f"hosts/{host}/README.md")
+            missing.append(f"hosts/{host}/README.md (for {key})")
 assert not missing, missing
+
 hold = (root / "docs/P3-RENAME-HOLD.md").read_text()
 assert "RENAME_HOLD=active" in hold
 assert (root / "docs/plans/P3-rename-cutover-plan.md").is_file()

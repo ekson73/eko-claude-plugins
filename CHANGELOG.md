@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.3] — 2026-08-11
+
+### Fixed
+- CI `validate-catalog.yml`: IndentationError on research assert (main was red); CI now calls `scripts/validate-catalog.sh` as SSOT
+- ADR-003 SHOULD row: Pi/OpenCode no longer listed as pending-upstream
+
+
 ## [1.8.2] — 2026-08-11
 
 ### Changed
