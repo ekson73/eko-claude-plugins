@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.8.2] — 2026-08-11
+
+### Changed
+- Marketplace maos entry: multi-host/skills keywords; author → MAOS Community (gmail)
+- catalog **0.4.2** sanitize marker; autonomous backlog empty pending P3-GO
+- ROADMAP (prior) states HITL-only residual
+
+
 ## [1.8.1] — 2026-08-10
 
 ### Changed

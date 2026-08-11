@@ -1,25 +1,26 @@
 {
   "name": "eko-claude-plugins",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "owner": {
     "name": "Emilson Moraes",
     "email": "emilson.moraes@gmail.com",
     "url": "https://github.com/ekson73"
   },
   "metadata": {
-    "description": "Eko Plugin Marketplace hub (DECIDED target repo name: eko-plugin-marketplace). Claude marketplace + multi-host registry pointers. Product content upstream (e.g. multi-agent-os).",
+    "description": "Eko Plugin Marketplace hub (DECIDED system-name: eko-plugin-marketplace; GitHub BC eko-claude-plugins; RENAME_HOLD). Claude marketplace + multi-host catalog pointers. Product SSOT: multi-agent-os \u22651.22.1.",
     "repository": "https://github.com/ekson73/eko-claude-plugins",
     "license": "MIT",
     "homepage": "https://github.com/ekson73/eko-claude-plugins",
-    "lastUpdated": "2026-08-10"
+    "lastUpdated": "2026-08-11"
   },
   "plugins": [
     {
       "name": "maos",
-      "description": "MAOS (Multi-Agent OS) - Coordination Framework for AI Agents with Orchestration, Sentinel Protocol, Worktree Policy, Status Maps",
+      "description": "MAOS (Multi-Agent OS) \u2014 multi-agent coordination. Claude: install from this marketplace. Portable: Agent Skills / Pi package / OpenCode thin plugin upstream.",
       "author": {
-        "name": "Vek - Desenvolvimento de Software",
-        "email": "emilson.moraes@vectorinf.com.br"
+        "name": "MAOS Community",
+        "email": "emilson.moraes@gmail.com",
+        "url": "https://github.com/ekson73/multi-agent-os"
       },
       "source": {
         "source": "url",
@@ -30,13 +31,18 @@
       "repository": "https://github.com/ekson73/multi-agent-os",
       "license": "MIT",
       "keywords": [
-        "maos",
+        "agent-skills",
         "ai-agents",
-        "orchestration",
+        "git-worktrees",
+        "maos",
         "multi-agent",
-        "sentinel",
+        "multi-host",
         "observability",
-        "git-worktrees"
+        "opencode-plugin",
+        "orchestration",
+        "pi-package",
+        "sentinel",
+        "skills-sh"
       ],
       "homepage": "https://github.com/ekson73/multi-agent-os"
     }
