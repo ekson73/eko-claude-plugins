@@ -20,7 +20,7 @@ Claude-only marketplace name/epistemology is too narrow. Multiple harnesses need
 | Priority | Hosts | Action in this repo |
 |---|---|---|
 | MUST | Claude Code | keep marketplace.json green |
-| SHOULD | Pi, OpenCode, Codex | pointer/docs; pending-upstream until product scaffolds exist |
+| SHOULD | Codex (+ skills path) | docs pointer; Pi/OpenCode promoted to ready — see Addendum 2026-08-10 |
 | COULD | GH Copilot, Kiro, Warp, Gemini/Antigravity | docs-only pointers |
 | N/A | ChatGPT store, Grok, Muse Code, VS Code VSIX index | explicit n/a |
 
