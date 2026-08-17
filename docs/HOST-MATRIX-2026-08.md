@@ -5,7 +5,7 @@
 > **Product SSOT:** upstreams e.g. `multi-agent-os` (`maos`).  
 > **Name:** DECIDED `eko-plugin-marketplace` (repo BC `eko-claude-plugins`).
 >
-> **Deep research + council:** [`research/HOST-RESEARCH-2026-08.md`](./research/HOST-RESEARCH-2026-08.md) (as-of 2026-08-10).
+> **Deep research + council:** [`research/HOST-RESEARCH-2026-08.md`](./research/HOST-RESEARCH-2026-08.md) (as-of 2026-08-10) · **Compat re-verified 2026-08-17** via `last30days` + web search (no new `ready`; see `docs/COMPAT-EXPANSION-2026-08-17.md`).
 
 ## Snapshot signals (Aug 2026)
 
@@ -25,6 +25,7 @@
 | **Warp** | ~64k★ ADE | thin 3p pack mall | **COULD docs** |
 | **Grok** | model/API | provider | **N/A** |
 | **Meta Muse Code** | community dumps | no stable 3p registry | **N/A** |
+| **DeepSeek harness** | `deepseek-reasonix` Go binary + `openclaude` OpenAI-compat (model provider) | **Model**, not pack host — use via OpenCode/Pi skills | **N/A** — document `npx skills add … -a '*'` via provider-agnostic harness |
 
 ### Cross-cutting (not eko ownership, but related)
 | Layer | Role | Relation to eko |
