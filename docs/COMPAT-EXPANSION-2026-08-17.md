@@ -1,5 +1,14 @@
 # Compat Expansion 2026-08-17 — honest assessment
 
+> **⚠️ Snapshot datado — parcialmente superado.** Este documento é o registro da
+> avaliação de 2026-08-17 e foi deliberadamente **não** reescrito. Uma correção
+> posterior: o agent id do Kiro é **`kiro-cli`**, não `kiro` — o `-a kiro` citado
+> na tabela abaixo é rejeitado pelo skills CLI (`Invalid agents: kiro`) e não
+> escreve nada. E o Kiro Crew é um **loader separado**, com um segundo passo de
+> install próprio. SSOT do caminho atual:
+> [MULTI-HARNESS-COMPAT.md](MULTI-HARNESS-COMPAT.md) e
+> [hosts/aws-kiro/README.md](../hosts/aws-kiro/README.md). Verificado 2026-09-17.
+
 > **Data:** 2026-08-17 (dom) · **Fontes:** HOST-MATRIX-2026-08.md + MULTI-HARNESS-COMPAT.md + web search 2026-08-17 + last30days 2026-07-18→2026-08-17
 > **Princípio:** `eko-plugin-marketplace = INDEX` (ponteiros), `multi-agent-os (maos) = PRODUCT` (skills). Honesto sobre o que é `ready` (install funciona hoje) vs `docs` (apenas ponteiro skills) vs `n/a`.
 

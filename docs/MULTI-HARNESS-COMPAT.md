@@ -39,8 +39,8 @@
 | **Gemini CLI** | `docs` | `npx skills add ekson73/multi-agent-os -g -a gemini-cli` | Also **Extensions** (Google-owned); eko docs only. See Antigravity transition |
 | **Antigravity** | `docs` | `npx skills add ekson73/multi-agent-os -g -a '*'` | Sibling/successor CLI to Gemini (2026 transition messaging); not a separate eko mall |
 | **GitHub Copilot** | `docs` | `npx skills add ekson73/multi-agent-os -g -a github-copilot` | Native Copilot plugins/MCP exist; skills = discovery bridge |
-| **AWS Kiro** | `docs` | `npx skills add ekson73/multi-agent-os -g -a kiro` | Skills+MCP+ACP+Open VSX — eko ≠ Open VSX publisher |
-| **Kiro Crew** | `docs` | same as Kiro skills line | In-product multi-agent; **not** a 3p marketplace |
+| **AWS Kiro** | `docs` | `npx skills add ekson73/multi-agent-os -g -a kiro-cli` | Serves kiro-cli **and** the Kiro IDE default agent; skills there are auto-registered as `/slash` commands. Skills+MCP+ACP+Open VSX — eko ≠ Open VSX publisher |
+| **Kiro Crew** | `docs` | `kirocrew config set skills.extra_paths '["~/.kiro/skills"]'` | **A second, separate loader — NOT covered by the skills CLI.** Points Crew at what the Kiro line already installed. Hot-reloaded, no restart |
 | **Warp** | `docs` | `npx skills add ekson73/multi-agent-os -g -a '*'` | Thin 3p pack mall |
 | **ChatGPT store** | `n/a` | — | OpenAI-controlled |
 | **VS Code Marketplace** | `n/a` | — | Editor extensions ≠ agent pack index |
