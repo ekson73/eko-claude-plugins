@@ -39,8 +39,8 @@
 | **Gemini CLI** | `docs` | `npx skills add ekson73/multi-agent-os -g -a gemini-cli` | Also **Extensions** (Google-owned); eko docs only. See Antigravity transition |
 | **Antigravity** | `docs` | `npx skills add ekson73/multi-agent-os -g -a '*'` | Sibling/successor CLI to Gemini (2026 transition messaging); not a separate eko mall |
 | **GitHub Copilot** | `docs` | `npx skills add ekson73/multi-agent-os -g -a github-copilot` | Native Copilot plugins/MCP exist; skills = discovery bridge |
-| **AWS Kiro** | `docs` | `npx skills add ekson73/multi-agent-os -g -a kiro` | Skills+MCP+ACP+Open VSX — eko ≠ Open VSX publisher |
-| **Kiro Crew** | `docs` | same as Kiro skills line | In-product multi-agent; **not** a 3p marketplace |
+| **AWS Kiro** | `docs` | `npx skills add ekson73/multi-agent-os -g -a kiro-cli` | Serves kiro-cli **and** the Kiro IDE default agent; skills there are auto-registered as `/slash` commands. Skills+MCP+ACP+Open VSX — eko ≠ Open VSX publisher |
+| **Kiro Crew** | `docs` | First install the AWS Kiro skills above (`-a kiro-cli`). Run `kirocrew config get skills.extra_paths`, then `kirocrew config edit` to append `~/.kiro/skills` without removing existing paths; verify with `kirocrew config get skills.extra_paths` | **A second, separate loader — NOT covered by the skills CLI.** Points Crew at the installed Kiro skills. After editing, start a new session or use agent Reload; if the skill is still absent, restart the gateway. |
 | **Warp** | `docs` | `npx skills add ekson73/multi-agent-os -g -a '*'` | Thin 3p pack mall |
 | **ChatGPT store** | `n/a` | — | OpenAI-controlled |
 | **VS Code Marketplace** | `n/a` | — | Editor extensions ≠ agent pack index |
@@ -56,7 +56,7 @@ Installs skills into **all agents the skills CLI detects** on the machine. Prefe
 
 ### Agent id caveat
 
-skills CLI agent identifiers **evolve**. If `-a gemini-cli` / `github-copilot` / `kiro` fails:
+skills CLI agent identifiers **evolve**. If `-a gemini-cli` / `github-copilot` / `kiro-cli` fails:
 
 ```bash
 npx skills add ekson73/multi-agent-os -l          # list skills in repo
@@ -85,7 +85,7 @@ Native path = deepest host integration. Skills path = **cross-harness portabilit
 ## Operator / agent quick path
 
 1. Read this matrix → pick harness row  
-2. Run **Primary install**  
+2. Run **Primary install**. For Kiro Crew, first install the AWS Kiro skills with `-a kiro-cli`; then read `skills.extra_paths` with `kirocrew config get skills.extra_paths`, append `~/.kiro/skills` via `kirocrew config edit` without removing existing entries, and verify with `kirocrew config get skills.extra_paths`. Do not replace the list with a one-element `config set`.
 3. If product bugs: file on **multi-agent-os**, not eko  
 4. If discovery/docs wrong: PR on **eko-claude-plugins**  
 5. GitHub rename: only per [P3 cutover plan](./plans/P3-rename-cutover-plan.md) after GO  

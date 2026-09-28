@@ -1,7 +1,7 @@
 {
   "$schema": "./catalog.schema.json",
   "catalog": "eko-plugin-marketplace",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Eko multi-host plugin marketplace / distribution index (pointers only). Target repo name eko-plugin-marketplace. No agentic-tool payloads.",
   "formerly": "eko-claude-plugins",
   "domain": "distribution",
@@ -95,11 +95,13 @@
         "aws-kiro": {
           "status": "docs",
           "kind": "skills-cli-pointer",
-          "install": "npx skills add ekson73/multi-agent-os -g -a kiro",
+          "install": "npx skills add ekson73/multi-agent-os -g -a kiro-cli",
           "host_readme": "hosts/aws-kiro/README.md",
           "compat_note": "Kiro: AGENTS.md + Skills + MCP + Open VSX; eko does not publish Open VSX",
           "note": "Kiro: Skills + MCP + ACP + AGENTS.md + Open VSX. eko \u2260 Open VSX publisher. Crew = in-product multi-agent (see aws-kiro-crew).",
-          "research_as_of": "2026-08-10"
+          "id_note": "Agent id is kiro-cli. `-a kiro` is REJECTED by the skills CLI (Invalid agents: kiro) and writes nothing; it was published here in error until 2026-09-17. ~/.kiro/skills serves kiro-cli AND the Kiro IDE default agent, and skills landing there are auto-registered as /slash commands. Kiro Crew is a SEPARATE loader with its own install step, see aws-kiro-crew.",
+          "research_as_of": "2026-08-10",
+          "verified_as_of": "2026-09-17"
         },
         "grok": {
           "status": "n/a",
@@ -123,8 +125,10 @@
           "status": "docs",
           "kind": "feature-surface-pointer",
           "parent": "aws-kiro",
-          "install": "npx skills add ekson73/multi-agent-os -g -a kiro",
-          "note": "Kiro Crew is multi-agent orchestration inside Kiro \u2014 not a third-party marketplace. Discover MAOS skills the same way as Kiro; configure crews in-product.",
+          "install": "kirocrew config get skills.extra_paths && kirocrew config edit && kirocrew config get skills.extra_paths",
+          "requires": "aws-kiro install first",
+          "id_note": "First install with aws-kiro (`npx skills add ekson73/multi-agent-os -g -a kiro-cli`). Crew has NO skills-CLI agent id: it independently reads ~/.kiro/crew/skills plus skills.extra_paths. In `kirocrew config edit`, append `~/.kiro/skills` only if absent, preserving every existing path; `config set` replaces the entire list. Verify the final `config get` retains old paths and includes the new one. Start a new Crew session or use agent Reload, then ask Crew to find an installed skill; if absent, restart the gateway and try again because existing loaders may retain an earlier path snapshot.",
+          "note": "Kiro Crew is multi-agent orchestration inside Kiro, not a third-party marketplace. First install MAOS skills for Kiro (`-a kiro-cli`), then add ~/.kiro/skills to Crew's skills.extra_paths without replacing existing entries; configure crews in-product.",
           "host_readme": "hosts/aws-kiro/README.md",
           "research_as_of": "2026-08-10"
         }
