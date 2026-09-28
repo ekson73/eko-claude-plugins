@@ -28,12 +28,19 @@ Step 1 alone leaves Kiro Crew with none of the skills.
 npx skills add ekson73/multi-agent-os -g -a kiro-cli
 
 # 2 — Kiro Crew reads ~/.kiro/crew/skills + skills.extra_paths and is NOT
-#     covered by the skills CLI. Point it at what step 1 just installed.
-kirocrew config set skills.extra_paths '["~/.kiro/skills"]'
+#     covered by the skills CLI. Inspect its existing extra paths first.
+kirocrew config get skills.extra_paths
+kirocrew config edit
 ```
 
-Verify: `kirocrew config get skills.extra_paths`, then ask Kiro to search its
-skills — `extra_paths` is watched, so step 2 applies without a restart.
+In the editor, add `"~/.kiro/skills"` to `skills.extra_paths` **only if absent**;
+keep every existing entry, then save and exit. Do not replace the list with a
+one-element value via `kirocrew config set` — `set` overwrites it.
+
+Verify with `kirocrew config get skills.extra_paths`: the output must contain
+`~/.kiro/skills` **and all paths present before the edit**. Then ask Kiro Crew
+to find a skill installed in step 1. `extra_paths` is watched, so the edit
+applies without a restart.
 
 The agent id is **`kiro-cli`**. There is no `kiro`, `kiro-ide` or `kiro-crew`
 id — the skills CLI rejects them with `Invalid agents: <id>` and writes nothing.

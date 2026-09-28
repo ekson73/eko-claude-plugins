@@ -125,9 +125,9 @@
           "status": "docs",
           "kind": "feature-surface-pointer",
           "parent": "aws-kiro",
-          "install": "kirocrew config set skills.extra_paths '[\"~/.kiro/skills\"]'",
+          "install": "kirocrew config get skills.extra_paths && kirocrew config edit && kirocrew config get skills.extra_paths",
           "requires": "aws-kiro install first",
-          "id_note": "Crew has NO skills-CLI agent id and is NOT covered by `-a kiro-cli`: it is a second, independent loader reading ~/.kiro/crew/skills plus the skills.extra_paths config key. This command points it at what the aws-kiro step installed; extra_paths is watched, so it applies without a restart. Verify with `kirocrew config get skills.extra_paths`.",
+          "id_note": "First install with aws-kiro (`npx skills add ekson73/multi-agent-os -g -a kiro-cli`). Crew has NO skills-CLI agent id: it independently reads ~/.kiro/crew/skills plus skills.extra_paths. In `kirocrew config edit`, append `~/.kiro/skills` only if absent, preserving every existing path; `config set` replaces the entire list. Verify the final `config get` retains old paths and includes the new one, then ask Crew to find an installed skill. extra_paths is watched; no restart needed.",
           "note": "Kiro Crew is multi-agent orchestration inside Kiro \u2014 not a third-party marketplace. Discover MAOS skills the same way as Kiro; configure crews in-product.",
           "host_readme": "hosts/aws-kiro/README.md",
           "research_as_of": "2026-08-10"
