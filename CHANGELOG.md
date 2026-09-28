@@ -7,7 +7,7 @@
 - **`aws-kiro-crew` claimed the same install as Kiro; it is a different loader.** Kiro Crew reads `~/.kiro/crew/skills` plus the `skills.extra_paths` config key and has **no** skills-CLI agent id, so `-a kiro-cli` never reaches it. Its install now inspects existing paths with `kirocrew config get skills.extra_paths`, appends `~/.kiro/skills` if absent using `kirocrew config edit` without replacing existing entries, then verifies with `kirocrew config get skills.extra_paths`.
 
 ### Changed
-- `hosts/aws-kiro/README.md`: install is now the two steps a complete Kiro install actually needs, with the verify command. Notes that `~/.kiro/skills` serves kiro-cli **and** the Kiro IDE default agent, and that skills there are auto-registered as `/slash` commands.
+- `hosts/aws-kiro/README.md`: install now documents the two steps needed when Kiro Crew is used, with the verify command. Notes that `~/.kiro/skills` serves kiro-cli **and** the Kiro IDE default agent, and that skills there are auto-registered as `/slash` commands.
 - catalog **0.4.3** — `verified_as_of` + `id_note` on the two Kiro providers.
 - `docs/COMPAT-EXPANSION-2026-08-17.md`: superseded-note header. The dated snapshot is deliberately **not** rewritten; it points at the SSOT instead.
 
