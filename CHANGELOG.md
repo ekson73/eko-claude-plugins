@@ -4,7 +4,7 @@
 
 ### Fixed
 - **Kiro install was broken for every user.** The published agent id `kiro` is not valid — the skills CLI answers `Invalid agents: kiro`, reports `"status": "failed"` and writes **zero** files. Corrected to **`kiro-cli`** in `registry/catalog.json` (`aws-kiro`), `hosts/aws-kiro/README.md` and `docs/MULTI-HARNESS-COMPAT.md`. Verified against an isolated `HOME`: `-a kiro-cli` writes `~/.kiro/skills/<name>/SKILL.md` with `"agents": ["Kiro CLI"]`.
-- **`aws-kiro-crew` claimed the same install as Kiro; it is a different loader.** Kiro Crew reads `~/.kiro/crew/skills` plus the `skills.extra_paths` config key and has **no** skills-CLI agent id, so `-a kiro-cli` never reaches it. Its `install` is now `kirocrew config set skills.extra_paths '["~/.kiro/skills"]'`, pointing Crew at what the Kiro step installed.
+- **`aws-kiro-crew` claimed the same install as Kiro; it is a different loader.** Kiro Crew reads `~/.kiro/crew/skills` plus the `skills.extra_paths` config key and has **no** skills-CLI agent id, so `-a kiro-cli` never reaches it. Its install now inspects existing paths with `kirocrew config get skills.extra_paths`, appends `~/.kiro/skills` if absent using `kirocrew config edit` without replacing existing entries, then verifies with `kirocrew config get skills.extra_paths`.
 
 ### Changed
 - `hosts/aws-kiro/README.md`: install is now the two steps a complete Kiro install actually needs, with the verify command. Notes that `~/.kiro/skills` serves kiro-cli **and** the Kiro IDE default agent, and that skills there are auto-registered as `/slash` commands.
