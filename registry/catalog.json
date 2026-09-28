@@ -127,8 +127,8 @@
           "parent": "aws-kiro",
           "install": "kirocrew config get skills.extra_paths && kirocrew config edit && kirocrew config get skills.extra_paths",
           "requires": "aws-kiro install first",
-          "id_note": "First install with aws-kiro (`npx skills add ekson73/multi-agent-os -g -a kiro-cli`). Crew has NO skills-CLI agent id: it independently reads ~/.kiro/crew/skills plus skills.extra_paths. In `kirocrew config edit`, append `~/.kiro/skills` only if absent, preserving every existing path; `config set` replaces the entire list. Verify the final `config get` retains old paths and includes the new one, then ask Crew to find an installed skill. extra_paths is watched; no restart needed.",
-          "note": "Kiro Crew is multi-agent orchestration inside Kiro \u2014 not a third-party marketplace. Discover MAOS skills the same way as Kiro; configure crews in-product.",
+          "id_note": "First install with aws-kiro (`npx skills add ekson73/multi-agent-os -g -a kiro-cli`). Crew has NO skills-CLI agent id: it independently reads ~/.kiro/crew/skills plus skills.extra_paths. In `kirocrew config edit`, append `~/.kiro/skills` only if absent, preserving every existing path; `config set` replaces the entire list. Verify the final `config get` retains old paths and includes the new one. Start a new Crew session or use agent Reload, then ask Crew to find an installed skill; if absent, restart the gateway and try again because existing loaders may retain an earlier path snapshot.",
+          "note": "Kiro Crew is multi-agent orchestration inside Kiro, not a third-party marketplace. First install MAOS skills for Kiro (`-a kiro-cli`), then add ~/.kiro/skills to Crew's skills.extra_paths without replacing existing entries; configure crews in-product.",
           "host_readme": "hosts/aws-kiro/README.md",
           "research_as_of": "2026-08-10"
         }

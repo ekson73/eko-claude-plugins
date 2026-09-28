@@ -38,9 +38,10 @@ keep every existing entry, then save and exit. Do not replace the list with a
 one-element value via `kirocrew config set` — `set` overwrites it.
 
 Verify with `kirocrew config get skills.extra_paths`: the output must contain
-`~/.kiro/skills` **and all paths present before the edit**. Then ask Kiro Crew
-to find a skill installed in step 1. `extra_paths` is watched, so the edit
-applies without a restart.
+`~/.kiro/skills` **and all paths present before the edit**. Start a new Crew
+session or use the agent Reload action, then ask Crew to find a skill installed
+in step 1. If Crew still cannot find it, restart the gateway and try again;
+an existing loader may retain its earlier `extra_paths` snapshot.
 
 The agent id is **`kiro-cli`**. There is no `kiro`, `kiro-ide` or `kiro-crew`
 id — the skills CLI rejects them with `Invalid agents: <id>` and writes nothing.
