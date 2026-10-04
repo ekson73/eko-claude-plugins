@@ -1,0 +1,129 @@
+---
+name: gitleaks
+
+# Secret scanning with the open-source gitleaks binary (no license, no GHAS).
+# Pinned by version + SHA256 of the release tarball; scans the FULL git history,
+# merge commits included, with `gitleaks git` (`detect` is legacy).
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  gitleaks:
+    name: gitleaks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      # Merge commits only show a patch with --diff-merges; without it a secret
+      # added while resolving a merge conflict never reaches the scanner.
+      MERGE_DIFFS: --diff-merges=first-parent
+      FULL_HISTORY_OPTS: --full-history --all --diff-filter=tuxdb --diff-merges=first-parent
+    steps:
+      - name: Checkout (full history)
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Install gitleaks (pinned version + SHA256)
+        env:
+          GITLEAKS_VERSION: 8.30.1
+          # SHA256 of gitleaks_8.30.1_linux_x64.tar.gz, from the official release
+          # checksums file (github.com/gitleaks/gitleaks/releases/tag/v8.30.1).
+          # Pinned here on purpose: a checksum fetched at runtime from the same
+          # release as the tarball would not protect against a tampered release.
+          GITLEAKS_SHA256: 551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb
+        run: |
+          set -euo pipefail
+          tarball="gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          url="https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/${tarball}"
+          curl -fsSL --tlsv1.2 --proto '=https' "$url" -o "$RUNNER_TEMP/$tarball"
+          echo "${GITLEAKS_SHA256}  $RUNNER_TEMP/${tarball}" | sha256sum --check --strict
+          # Extract only the binary member.
+          tar -xzf "$RUNNER_TEMP/$tarball" -C "$RUNNER_TEMP" gitleaks
+          "$RUNNER_TEMP/gitleaks" version
+
+      - name: Build effective config
+        # Reuses the repository's .gitleaks.toml unchanged when present. A file
+        # without an [extend] block replaces the default rules, so one holding
+        # only an allowlist would match nothing; in that case `useDefault = true`
+        # is added to the runtime copy so the default rules apply with the
+        # allowlist on top.
+        run: |
+          set -euo pipefail
+          cfg="$RUNNER_TEMP/gitleaks.toml"
+          if [ -f .gitleaks.toml ]; then
+            cp .gitleaks.toml "$cfg"
+            if ! grep -qE '^[[:space:]]*\[extend\]' "$cfg"; then
+              printf '\n[extend]\nuseDefault = true\n' >> "$cfg"
+            fi
+          else
+            printf '[extend]\nuseDefault = true\n' > "$cfg"
+          fi
+
+      - name: Positive controls (scanner must detect synthetic tokens)
+        # Tokens are generated at runtime in throwaway repositories under
+        # RUNNER_TEMP and never committed to this repository. A clean scan is
+        # only trusted after every control below behaves as expected.
+        run: |
+          set -euo pipefail
+          gl="$RUNNER_TEMP/gitleaks"
+          cfg="$RUNNER_TEMP/gitleaks.toml"
+          tok() { printf 'ghp_%s' "$(LC_ALL=C tr -dc 'A-Za-z0-9' </dev/urandom | head -c 36)"; }
+          g() { git -c user.name=positive-control -c user.email=pc@example.invalid -c commit.gpgsign=false "$@"; }
+          expect() { # <label> <expected rc> <gitleaks args...>
+            local label="$1" want="$2" rc=0; shift 2
+            "$gl" "$@" --config "$cfg" --no-banner --redact --exit-code 1 >/dev/null 2>&1 || rc=$?
+            if [ "$rc" -ne "$want" ]; then
+              echo "::error::positive control '$label' returned rc=$rc, expected $want"
+              exit 1
+            fi
+            echo "positive control '$label' OK (rc=$rc)"
+          }
+
+          # 1. Plain file: the effective rule set must have rules.
+          d="$RUNNER_TEMP/pc-dir"; mkdir -p "$d"
+          printf 'token = "%s"\n' "$(tok)" > "$d/fake.txt"
+          expect "plain file" 1 dir "$d"
+
+          # 2. Token introduced only in a merge-conflict resolution.
+          r="$RUNNER_TEMP/pc-merge"; s="$RUNNER_TEMP/pc-merge-side"
+          git init -q -b main "$r"
+          echo base > "$r/a.txt"; g -C "$r" add a.txt; g -C "$r" commit -qm root
+          root=$(git -C "$r" rev-parse HEAD)
+          g -C "$r" worktree add -q -b side "$s" "$root"
+          echo main > "$r/a.txt"; g -C "$r" commit -qam main
+          echo side > "$s/a.txt"; g -C "$s" commit -qam side
+          base=$(git -C "$r" rev-parse HEAD)
+          g -C "$r" merge -q side >/dev/null 2>&1 || true
+          printf 'resolved\ntoken = "%s"\n' "$(tok)" > "$r/a.txt"
+          g -C "$r" add a.txt; g -C "$r" commit -qm merge
+          head=$(git -C "$r" rev-parse HEAD)
+          # Witness: without merge diffs the token is invisible, so this
+          # scenario really exercises the merge path.
+          expect "merge resolution, no merge diffs (witness)" 0 git "$r" --log-opts="${base}..${head}"
+          expect "merge resolution, range" 1 git "$r" --log-opts="${MERGE_DIFFS} ${base}..${head}"
+          expect "merge resolution, full history" 1 git "$r" --log-opts="${FULL_HISTORY_OPTS}"
+
+          # 3. New ref whose only commit is a root commit (initial push).
+          n="$RUNNER_TEMP/pc-root"
+          git init -q -b main "$n"
+          printf 'token = "%s"\n' "$(tok)" > "$n/a.txt"
+          g -C "$n" add a.txt; g -C "$n" commit -qm root
+          nh=$(git -C "$n" rev-parse HEAD)
+          expect "new ref with root commit" 1 git "$n" --log-opts="${MERGE_DIFFS} ${nh} --not --exclude=origin/HEAD --exclude=origin/main --remotes=origin"
+
+          rm -rf "$d" "$r" "$s" "$n"
+
+      - name: Scan full git history
+        run: |
+          set -euo pipefail
+          # Same log options gitleaks uses by default, plus merge diffs.
+          # --exit-code 1 fails the job on findings; --redact keeps values out of logs.
+          "$RUNNER_TEMP/gitleaks" git . --config "$RUNNER_TEMP/gitleaks.toml" \
+            --log-opts="$FULL_HISTORY_OPTS" --no-banner --redact --verbose --exit-code 1
