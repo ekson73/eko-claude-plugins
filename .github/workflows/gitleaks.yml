@@ -1,0 +1,70 @@
+name: gitleaks
+
+# Secret scanning with the open-source gitleaks binary (no license, no GHAS).
+# Pinned by version + SHA256 of the release tarball; scans the FULL git history
+# with `gitleaks git` (the current subcommand; `detect` is legacy).
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  gitleaks:
+    name: gitleaks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout (full history)
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Install gitleaks (pinned version + SHA256)
+        env:
+          GITLEAKS_VERSION: 8.30.1
+          # SHA256 of gitleaks_8.30.1_linux_x64.tar.gz, from the official release
+          # checksums file (github.com/gitleaks/gitleaks/releases/tag/v8.30.1).
+          GITLEAKS_SHA256: 551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb
+        run: |
+          set -euo pipefail
+          tarball="gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          url="https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/${tarball}"
+          curl -fsSL --tlsv1.2 --proto '=https' "$url" -o "$RUNNER_TEMP/$tarball"
+          echo "${GITLEAKS_SHA256}  $RUNNER_TEMP/${tarball}" | sha256sum --check --strict
+          # Extract only the binary member.
+          tar -xzf "$RUNNER_TEMP/$tarball" -C "$RUNNER_TEMP" gitleaks
+          "$RUNNER_TEMP/gitleaks" version
+
+      - name: Positive control (scanner must detect a synthetic token)
+        # A config file with zero rules makes gitleaks report "no leaks found"
+        # for everything. Prove the effective rule set detects a known-shape
+        # token, generated at runtime and never committed, before trusting a
+        # clean scan.
+        run: |
+          set -euo pipefail
+          cfg=()
+          if [ -f .gitleaks.toml ]; then cfg=(--config .gitleaks.toml); fi
+          ctl="$RUNNER_TEMP/positive-control"
+          mkdir -p "$ctl"
+          printf 'token = "ghp_%s"\n' "$(LC_ALL=C tr -dc 'A-Za-z0-9' </dev/urandom | head -c 36)" > "$ctl/fake.txt"
+          rc=0
+          "$RUNNER_TEMP/gitleaks" dir "$ctl" "${cfg[@]}" --no-banner --redact --exit-code 1 >/dev/null 2>&1 || rc=$?
+          rm -rf "$ctl"
+          if [ "$rc" -ne 1 ]; then
+            echo "::error::gitleaks did not detect the synthetic token (rc=$rc); the effective config cannot be trusted."
+            exit 1
+          fi
+          echo "positive control OK (rc=1)"
+
+      - name: Scan full git history
+        run: |
+          set -euo pipefail
+          cfg=()
+          if [ -f .gitleaks.toml ]; then cfg=(--config .gitleaks.toml); fi
+          # --exit-code 1 fails the job on findings; --redact keeps values out of logs.
+          "$RUNNER_TEMP/gitleaks" git . "${cfg[@]}" --no-banner --redact --verbose --exit-code 1
