@@ -3,8 +3,10 @@
 ## Reporting
 
 Report a suspected vulnerability privately through GitHub's
-**Security → Report a vulnerability** on this repository. Do not open a public
-issue for it.
+**Security → Report a vulnerability** on this repository. If that button is not
+shown, open an issue titled "Security contact request" with no details, and the
+maintainer will reply with a private channel. Do not put vulnerability details
+in a public issue.
 
 ## What this repository is
 
@@ -28,7 +30,8 @@ release artifacts and no CI secrets. Its supply-chain surface is therefore:
 
 Not in this repository, set by the owner in GitHub settings: branch protection
 on `main` (required review from code owners, required status checks
-`gitleaks` and `validate`), and Dependabot security updates.
+`gitleaks` and `validate`), Dependabot security updates, and private
+vulnerability reporting (off as of 2026-10-19).
 
 ## Tabletop: compromised upstream plugin (worm-style)
 

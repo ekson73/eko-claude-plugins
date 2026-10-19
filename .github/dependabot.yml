@@ -1,5 +1,6 @@
-# Keeps the SHA-pinned GitHub Actions current. Dependabot rewrites the SHA and
-# the version comment together. This repo has no package-manager dependencies.
+# Dependabot proposes updates for the SHA-pinned GitHub Actions. Check both the
+# SHA and the version comment in each update PR (the comment can go stale).
+# This repo has no package-manager dependencies.
 version: 2
 updates:
   - package-ecosystem: github-actions
