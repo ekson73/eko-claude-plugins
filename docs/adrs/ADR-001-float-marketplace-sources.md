@@ -70,7 +70,8 @@ With a floating source, any commit that reaches `main` reaches every consumer on
 
 1. Pick the candidate commit on multi-agent-os `main`.
 2. Review the **tree at the candidate commit** (`git show <sha>:<path> | cat -v`), not one commit's patch: an earlier commit can plant something the latest patch never shows. At minimum read, in full: `hooks/hooks.json` and every script it invokes (plus what they source), `.claude-plugin/`, any `.mcp.json`/`.lsp.json`, and the prompt-bearing content the plugin ships (`skills/**/SKILL.md`, `commands/`, `agents/`). Use `git diff <old-sha>..<candidate>` only to prioritise, never as the whole review.
-3. Open a PR here changing only `sha`, the marketplace `version`, `metadata.lastUpdated` and `CHANGELOG.md`; the PR body names the commit and what was reviewed.
+3. Check that the candidate's `.claude-plugin/plugin.json` `version` differs from the currently pinned commit's. Claude Code uses that version to decide whether an installed copy is refreshed, so a SHA change with the same version leaves existing installs on the old commit. If the version did not change, get it bumped upstream first and pin the commit that carries the bump.
+4. Open a PR here changing only `sha`, the marketplace `version`, `metadata.lastUpdated` and `CHANGELOG.md`; the PR body names the commit, its `plugin.json` version and what was reviewed.
 
 ### Exit
 
