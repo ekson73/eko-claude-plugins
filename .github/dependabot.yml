@@ -1,0 +1,9 @@
+# Keeps the SHA-pinned GitHub Actions current. Dependabot rewrites the SHA and
+# the version comment together. This repo has no package-manager dependencies.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 5

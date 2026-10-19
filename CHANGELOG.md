@@ -1,5 +1,12 @@
 # Changelog
 
+## [Unreleased]
+
+### Security
+- `validate-catalog.yml`: `actions/checkout` pinned to a commit SHA, `persist-credentials: false`, explicit `permissions: contents: read`.
+- `scripts/validate-catalog.sh`: fails when a workflow uses an action not pinned to a full commit SHA or has no top-level `permissions` block.
+- Added `.github/CODEOWNERS`, `.github/dependabot.yml` (github-actions, daily) and `SECURITY.md` (reporting, controls, compromised-upstream tabletop). Issue #2.
+
 ## [1.8.4] — 2026-09-17
 
 ### Fixed
