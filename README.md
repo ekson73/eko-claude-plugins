@@ -55,6 +55,8 @@ Plugin management runs **inside a Claude Code session** via the `/plugin` comman
 - `/plugin marketplace add` registers this catalog once per machine; afterwards `/plugin install <name>@eko-claude-plugins` for any listed plugin.
 - Run `/plugin` (Installed tab) to confirm, and `/help` to see the new skills/commands.
 
+> **Before installing `maos`**: its hooks run in your project with two behaviours on by default. The SessionStart preflight fetches upstream and fast-forwards or `rebase --autostash`es your checkout (opt out: `PREFLIGHT_NO_AUTOHEAL=1`), and if `worktree-gate.sh` itself errors it launches an installed AI CLI with edit and shell tools to repair it (opt out: `MAOS_SELFHEAL=0`). Set those variables in your environment before installing if you do not want either. See [ADR-001 Amendment 1](docs/adrs/ADR-001-float-marketplace-sources.md).
+
 > **Plugin name vs repo name**: the repository is `multi-agent-os`, but the **plugin is named `maos`** (see its `.claude-plugin/plugin.json`). Install and reference it as `maos`. Its skills/commands surface namespaced as **`/maos:<name>`** (e.g. `/maos:maos-concierge`, `/maos:agentic-status`).
 
 ### Keep plugins up to date
