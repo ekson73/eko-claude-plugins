@@ -148,7 +148,7 @@ All notable changes to this marketplace will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [pre-1.6.1] — undated (heading was a stale "Unreleased"; these entries shipped before 1.6.1)
 
 ### Added
 - **`maos` ships `maos-concierge`** (upstream `ekson73/multi-agent-os` v1.6.0, PR #97, merged) — onboarding/guide/router/governance-anchor skill over the whole MAOS framework (6 modes). Delivered automatically via the `ref:main` float (ADR-001); README plugin table refreshed to upstream v1.6.0. No `marketplace.json` change required (float + upstream `plugin.json` version SSOT).
