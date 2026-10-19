@@ -11,7 +11,7 @@
 >
 > **Multi-harness:** [MULTI-HARNESS-COMPAT](./docs/MULTI-HARNESS-COMPAT.md) · [research 2026-08 council](./docs/research/HOST-RESEARCH-2026-08.md) — ready: Claude/Pi/OpenCode; spine: Agent Skills → MAOS.
 
-Personal hub by [Emilson Moraes](https://github.com/ekson73) — Claude marketplace entries float on upstream `main` per [ADR-001](./docs/adrs/ADR-001-float-marketplace-sources.md). Machine index: [`registry/catalog.json`](./registry/catalog.json).
+Personal hub by [Emilson Moraes](https://github.com/ekson73) — Claude marketplace entries float on upstream `main` per [ADR-001](./docs/adrs/ADR-001-float-marketplace-sources.md), except `maos`, which is pinned to a reviewed commit (ADR-001 Amendment 1). Machine index: [`registry/catalog.json`](./registry/catalog.json).
 
 ### Domain boundary (do not blur)
 
@@ -59,7 +59,7 @@ Plugin management runs **inside a Claude Code session** via the `/plugin` comman
 
 ### Keep plugins up to date
 
-Sources **float on `main`** (ADR-001), so refreshing pulls each plugin's latest upstream commit:
+Floating sources track `main` (ADR-001), so refreshing pulls their latest upstream commit. `maos` is pinned to a commit `sha` (ADR-001 Amendment 1), so it moves only when this marketplace bumps the pin:
 
 ```text
 /plugin marketplace update eko-claude-plugins
@@ -73,7 +73,7 @@ Claude Code also auto-checks for marketplace updates at startup.
 |---|---|
 | `install` can't find the plugin | Use the **plugin name** `maos` (not the repo name `multi-agent-os`): `/plugin install maos@eko-claude-plugins`. |
 | Commands missing after install | Restart the session, then `/plugin` (Manage tab) to confirm it's enabled. |
-| Stuck on an old version | `/plugin marketplace update eko-claude-plugins` (float means update = latest upstream commit). |
+| Stuck on an old version | `/plugin marketplace update eko-claude-plugins` (floating entries update to the latest upstream commit; `maos` updates to the commit pinned here). |
 
 ---
 
@@ -81,9 +81,9 @@ Claude Code also auto-checks for marketplace updates at startup.
 
 | Plugin | Description | Category | Source | License |
 |--------|-------------|----------|--------|---------|
-| [maos](https://github.com/ekson73/multi-agent-os) | Multi-Agent Coordination Framework — orchestration, Sentinel Protocol, worktree governance, the Forge meta-agent; ships `maos-concierge` | AI Agents | `github:ekson73/multi-agent-os` @ `main` (float, ADR-001) | MIT |
+| [maos](https://github.com/ekson73/multi-agent-os) | Multi-Agent Coordination Framework — orchestration, Sentinel Protocol, worktree governance, the Forge meta-agent; ships `maos-concierge` | AI Agents | `url:https://github.com/ekson73/multi-agent-os.git` @ `e5df6a8` (pinned, ADR-001 Amendment 1) | MIT |
 
-> Versions are **not pinned** at the marketplace layer (float, ADR-001) — each plugin's canonical semver lives in its own upstream `plugin.json`.
+> `maos` is pinned to a commit `sha` (ADR-001 Amendment 1); entries added later float by default. Version numbers are **not** set at the marketplace layer — each plugin's canonical semver lives in its own upstream `plugin.json`.
 
 ### maos — what's inside
 
@@ -106,7 +106,7 @@ Sentinel Protocol (anomaly detection / loop prevention) · Status Map observabil
 To suggest a plugin for this marketplace:
 
 1. Ensure your plugin has a valid `.claude-plugin/plugin.json`.
-2. Open an [issue](https://github.com/ekson73/eko-claude-plugins/issues) with plugin details, **or** submit a PR adding it to `marketplace.json` (float `github` source per ADR-001).
+2. Open an [issue](https://github.com/ekson73/eko-claude-plugins/issues) with plugin details, **or** submit a PR adding it to `marketplace.json` (`url` HTTPS source, float by default per ADR-001).
 
 **Plugin requirements**: public GitHub repo · valid `plugin.json` · MIT-or-compatible license · `README.md`. Maintainers work via **worktree → branch → PR → squash-merge** per [`AGENTS.md`](./AGENTS.md) / ADR-002 (never commit `main` directly). Do **not** add a per-plugin `"version"` field to `marketplace.json` (it breaks `/plugin update`).
 
