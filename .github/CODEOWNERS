@@ -1,0 +1,3 @@
+# Every path needs the maintainer's review. Takes effect for merges only when
+# branch protection on main has "Require review from Code Owners" enabled.
+* @ekson73

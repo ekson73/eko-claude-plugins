@@ -63,3 +63,34 @@ assert (root / "docs/MULTI-HARNESS-COMPAT.md").is_file()
 assert (root / "docs/research/HOST-RESEARCH-2026-08.md").is_file()
 print("OK validate-catalog", mp["version"], cat.get("version"), "HOLD+PLAN+COMPAT present")
 PY
+
+# Workflow supply-chain floor: every external action pinned to a full commit
+# SHA, and every workflow declares a top-level `permissions:` block so the
+# token is not left at the repository default.
+python3 <<'PY'
+import re
+import sys
+from pathlib import Path
+
+bad = []
+for wf in sorted(Path(".github/workflows").glob("*.y*ml")):
+    text = wf.read_text()
+    if not re.search(r"(?m)^permissions:", text):
+        bad.append(f"{wf}: no top-level permissions block")
+    # Line-based on purpose (no YAML dependency). It matches `uses:` anywhere
+    # on a line, quoted or not, so flow-style steps (`- {uses: a/b@v4}`) are
+    # caught too. A `uses:` inside a run script is also flagged: fail-closed.
+    for n, line in enumerate(text.splitlines(), 1):
+        if line.lstrip().startswith("#"):
+            continue
+        for m in re.finditer(r"['\"]?\buses['\"]?\s*:\s*['\"]?([^'\"\s#,}]+)", line):
+            ref = m.group(1)
+            if ref.startswith("./") or ref.startswith("docker://"):
+                continue
+            if not re.fullmatch(r"[^@]+@[0-9a-f]{40}", ref):
+                bad.append(f"{wf}:{n}: action not pinned to a commit SHA: {ref}")
+if bad:
+    print("\n".join("FAIL " + b for b in bad))
+    sys.exit(1)
+print("OK workflow hardening (SHA-pinned actions, explicit permissions)")
+PY
