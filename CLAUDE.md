@@ -32,7 +32,7 @@ eko-claude-plugins/                    # Marketplace root (this repo)
 └── README.md                            # Public documentation
 ```
 
-**Pattern**: Official Anthropic [`url` source type](https://code.claude.com/docs/en/plugin-marketplaces#plugin-sources) with an explicit `https://` URL — forces HTTPS transport (cross-OS incl. Windows). ⚠️ The `github` shorthand source clones over **SSH** (`git@github.com:`), which hard-fails on fresh Windows machines (`No ED25519 host key … Host key verification failed`) — do not use it for GitHub plugins. Zero vendoring, zero submodules. Plugins are fetched fresh by Claude Code from their upstream repos, **tracking the default branch** (`"ref": "main"`, float — no SHA pin) per [ADR-001](./docs/adrs/ADR-001-float-marketplace-sources.md).
+**Pattern**: Official Anthropic [`url` source type](https://code.claude.com/docs/en/plugin-marketplaces#plugin-sources) with an explicit `https://` URL — forces HTTPS transport (cross-OS incl. Windows). ⚠️ The `github` shorthand source clones over **SSH** (`git@github.com:`), which hard-fails on fresh Windows machines (`No ED25519 host key … Host key verification failed`) — do not use it for GitHub plugins. Zero vendoring, zero submodules. Plugins are fetched fresh by Claude Code from their upstream repos, by default **tracking the default branch** (`"ref": "main"`, float) per [ADR-001](./docs/adrs/ADR-001-float-marketplace-sources.md); `maos` is the exception, pinned by `sha` (ADR-001 Amendment 1).
 
 ### Key Distinction
 
@@ -49,7 +49,7 @@ eko-claude-plugins/                    # Marketplace root (this repo)
 
 | File | Purpose | Update Frequency |
 |------|---------|------------------|
-| `marketplace.json` | Plugin registry (float `url` HTTPS sources — no per-plugin version) | On add/remove/re-pin |
+| `marketplace.json` | Plugin registry (`url` HTTPS sources; float by default, `maos` pinned by `sha`; no per-plugin version) | On add/remove/re-pin |
 | `CHANGELOG.md` | Version history | On every release |
 | `README.md` | User-facing documentation | On feature changes |
 
@@ -59,9 +59,9 @@ eko-claude-plugins/                    # Marketplace root (this repo)
 
 | Plugin | Source type | Upstream | Source pin | Status |
 |--------|-------------|----------|------------|--------|
-| `maos` | `url` (HTTPS, official Anthropic) | [ekson73/multi-agent-os](https://github.com/ekson73/multi-agent-os) | `ref: main` (float, ADR-001) | Active |
+| `maos` | `url` (HTTPS, official Anthropic) | [ekson73/multi-agent-os](https://github.com/ekson73/multi-agent-os) | `sha: e5df6a8` (pinned, ADR-001 Amendment 1) | Active |
 
-> Versions are **not** pinned at the marketplace layer (float) — each plugin's canonical semver lives in its own upstream `plugin.json`.
+> `maos` is pinned to a reviewed commit `sha` (ADR-001 Amendment 1); bumping it is a marketplace PR. Version numbers are **not** set at the marketplace layer — each plugin's canonical semver lives in its own upstream `plugin.json`.
 
 ---
 
@@ -90,7 +90,7 @@ eko-claude-plugins/                    # Marketplace root (this repo)
 
 ### Updating a Plugin
 
-**Routine version updates need no marketplace change** — entries float on `main`, so new upstream commits are picked up on the next `/plugin marketplace update` (ADR-001). Only edit `marketplace.json` to add/remove/re-describe a plugin, or to **re-pin a `sha`** on a supply-chain incident (supersedes `ref`). Then bump the top-level marketplace `version` + `CHANGELOG.md` + PR.
+**Routine version updates need no marketplace change for floating entries** — they track `main`, so new upstream commits are picked up on the next `/plugin marketplace update` (ADR-001). Only edit `marketplace.json` to add/remove/re-describe a plugin, or to **re-pin a `sha`** on a supply-chain incident (supersedes `ref`). Then bump the top-level marketplace `version` + `CHANGELOG.md` + PR. **Exception: `maos` is pinned**, so every `maos` update is a PR bumping its `sha` per ADR-001 Amendment 1 ("Bumping the pin").
 
 ### Removing a Plugin
 
@@ -125,7 +125,7 @@ eko-claude-plugins/                    # Marketplace root (this repo)
 ### Versioning
 
 - **Marketplace version**: Tracks structural changes to the catalog itself (top-level `marketplace.json` `version`)
-- **Plugin versions**: live in each plugin's **upstream `plugin.json`** (NOT in `marketplace.json` — float per ADR-001)
+- **Plugin versions**: live in each plugin's **upstream `plugin.json`** (no per-plugin `version` in `marketplace.json`, ADR-001)
 - Follow [Semantic Versioning 2.0.0](https://semver.org/)
 
 ### Commit Messages
@@ -422,4 +422,4 @@ This deep analysis was performed by `Claude-QA-c614-mkt-deep` to comprehensively
 
 ## Branching & Release Model
 
-**GitHub Flow (Class B — marketplace).** Canonical SSOT: [`AGENTS.md`](./AGENTS.md) §"Branching & Release Model" + `docs/adrs/ADR-002-github-flow-branching.md`. No environment branches here; consumer source-pin = float per ADR-001.
+**GitHub Flow (Class B — marketplace).** Canonical SSOT: [`AGENTS.md`](./AGENTS.md) §"Branching & Release Model" + `docs/adrs/ADR-002-github-flow-branching.md`. No environment branches here; consumer source-pin = float per ADR-001, except `maos` (`sha` pin, Amendment 1).

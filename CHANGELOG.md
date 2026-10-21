@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.9.0] — 2026-10-19
+
+### Changed
+- **`maos` pinned to a reviewed commit** (`sha` `e5df6a8e2ffef360463125361b1619d992c74d5b`, MAOS 1.22.1) instead of floating on `main`. Rationale and bump procedure: ADR-001 Amendment 1. The float premise ("`main` is PR-gated + branch-protected") is weaker than stated for multi-agent-os (see multi-agent-os#305 owner readback) and multi-agent-os#493 containment is unrecorded. Other entries still float. Refs #2.
+- README, CLAUDE.md, AGENTS.md, `.github/copilot-instructions.md`, `docs/domain-boundary-eko-vs-maos.md`: describe the `maos` pin; entries added later float by default.
+
 ## [1.8.4] — 2026-09-17
 
 ### Fixed
